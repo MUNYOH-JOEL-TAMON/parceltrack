@@ -49,31 +49,31 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background-main flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-blue-50 flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         {/* Logo and Header */}
         <div className="text-center mb-8">
-          <div className="flex justify-center mb-4">
-            <div className="bg-primary-navy rounded-lg p-3">
-              <Package className="h-10 w-10 text-primary-blue" />
+          <div className="flex justify-center mb-6">
+            <div className="bg-primary-600 rounded-2xl p-4 shadow-lg">
+              <Package className="h-10 w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-primary-navy mb-2">
-            Admin Login
+          <h1 className="text-3xl font-bold text-dark-900 mb-2">
+            Welcome Back
           </h1>
-          <p className="text-text-secondary">
-            Sign in to access the admin dashboard
+          <p className="text-dark-600">
+            Admin Portal
           </p>
         </div>
 
         {/* Login Card */}
-        <div className="bg-white rounded-lg shadow-sm border border-border p-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <div className="bg-white rounded-2xl shadow-large border border-dark-100 p-8">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email Input */}
             <Input
-              label="Email Address"
+              label="Email address"
               type="email"
-              placeholder="admin@parceltrack.com"
+              placeholder="admin@parcelgo.com"
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -100,7 +100,7 @@ export const LoginPage: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-[38px] text-text-secondary hover:text-text-primary"
+                className="absolute right-4 top-[38px] text-dark-400 hover:text-dark-600 transition-colors"
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5" />
@@ -111,11 +111,10 @@ export const LoginPage: React.FC = () => {
             </div>
 
             {/* Forgot Password Link */}
-            <div className="flex items-center justify-between">
-              <div></div>
+            <div className="flex items-center justify-end">
               <Link
                 to="/admin/forgot-password"
-                className="text-sm text-primary-blue hover:text-blue-700 font-medium"
+                className="text-sm text-primary-600 hover:text-primary-700 font-medium transition-colors"
               >
                 Forgot password?
               </Link>
@@ -137,7 +136,7 @@ export const LoginPage: React.FC = () => {
         <div className="text-center mt-6">
           <Link
             to="/"
-            className="text-sm text-text-secondary hover:text-text-primary"
+            className="text-sm text-dark-600 hover:text-dark-900 transition-colors"
           >
             ← Back to Homepage
           </Link>
