@@ -58,17 +58,17 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isMobileOpen, onClos
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed top-0 left-0 h-full w-64 bg-primary-navy text-white z-50 transition-transform duration-300',
+          'fixed top-0 left-0 h-full w-64 bg-white border-r border-dark-100 z-50 transition-transform duration-300',
           'lg:translate-x-0',
           isMobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         {/* Logo */}
-        <div className="h-16 flex items-center gap-2 px-6 border-b border-white/10">
-          <div className="bg-primary-blue rounded-lg p-2">
-            <Package className="h-6 w-6 text-white" />
+        <div className="h-16 flex items-center gap-2.5 px-6 border-b border-dark-100">
+          <div className="bg-primary-600 rounded-xl p-2">
+            <Package className="h-5 w-5 text-white" />
           </div>
-          <span className="text-xl font-bold">ParcelTrack</span>
+          <span className="text-xl font-bold text-dark-900">ParcelGo</span>
         </div>
 
         {/* Navigation */}
@@ -84,14 +84,14 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isMobileOpen, onClos
                     to={item.path}
                     onClick={onClose}
                     className={cn(
-                      'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors',
+                      'flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 text-[15px] font-medium',
                       isActive
-                        ? 'bg-primary-blue text-white'
-                        : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                        ? 'bg-primary-50 text-primary-700'
+                        : 'text-dark-600 hover:bg-gray-50 hover:text-dark-900'
                     )}
                   >
                     <Icon className="h-5 w-5" />
-                    <span className="font-medium">{item.label}</span>
+                    <span>{item.label}</span>
                   </Link>
                 </li>
               );
@@ -100,13 +100,13 @@ export const AdminSidebar: React.FC<AdminSidebarProps> = ({ isMobileOpen, onClos
         </nav>
 
         {/* Logout */}
-        <div className="p-3 border-t border-white/10">
+        <div className="p-3 border-t border-dark-100">
           <button
             onClick={handleLogout}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-dark-600 hover:bg-gray-50 hover:text-dark-900 transition-all duration-200 text-[15px] font-medium"
           >
             <LogOut className="h-5 w-5" />
-            <span className="font-medium">Logout</span>
+            <span>Logout</span>
           </button>
         </div>
       </aside>

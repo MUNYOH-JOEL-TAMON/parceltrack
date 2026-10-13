@@ -47,15 +47,15 @@ export const DashboardPage: React.FC = () => {
       title: 'Total Shipments',
       value: stats?.totalShipments || 0,
       icon: Package,
-      color: 'text-primary-blue',
-      bgColor: 'bg-blue-50',
+      color: 'text-primary-600',
+      bgColor: 'bg-primary-50',
     },
     {
       title: 'In Transit',
       value: stats?.inTransit || 0,
       icon: Truck,
-      color: 'text-primary-blue',
-      bgColor: 'bg-blue-50',
+      color: 'text-primary-600',
+      bgColor: 'bg-primary-50',
     },
     {
       title: 'Out for Delivery',
@@ -94,7 +94,7 @@ export const DashboardPage: React.FC = () => {
                     <p className="text-sm text-text-secondary mb-1">{card.title}</p>
                     <p className="text-3xl font-bold text-text-primary">{card.value}</p>
                   </div>
-                  <div className={`w-12 h-12 rounded-lg ${card.bgColor} flex items-center justify-center`}>
+                  <div className={`w-12 h-12 rounded-xl ${card.bgColor} flex items-center justify-center`}>
                     <Icon className={`h-6 w-6 ${card.color}`} />
                   </div>
                 </div>
@@ -120,10 +120,10 @@ export const DashboardPage: React.FC = () => {
                   <YAxis />
                   <Tooltip 
                     labelFormatter={(value) => value.replace(/_/g, ' ')}
-                    contentStyle={{ borderRadius: '8px', border: '1px solid #E2E8F0' }}
+                    contentStyle={{ borderRadius: '12px', border: '1px solid #E2E8F0' }}
                   />
                   <Legend />
-                  <Bar dataKey="count" fill="#2563EB" radius={[8, 8, 0, 0]} />
+                  <Bar dataKey="count" fill="#16a34a" radius={[8, 8, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
