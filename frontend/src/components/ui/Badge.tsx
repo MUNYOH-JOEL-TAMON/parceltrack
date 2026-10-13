@@ -33,17 +33,17 @@ export const Badge: React.FC<BadgeProps> = ({ children, variant, status, classNa
   const effectiveVariant = status ? getStatusVariant(status) : variant || 'default';
 
   const variants = {
-    default: 'bg-gray-100 text-gray-800',
-    success: 'bg-status-success-bg text-status-success',
-    warning: 'bg-status-warning-bg text-status-warning',
-    error: 'bg-status-error-bg text-status-error',
+    default: 'bg-gray-100 text-gray-700',
+    success: 'bg-green-50 text-green-700',
+    warning: 'bg-yellow-50 text-yellow-700',
+    error: 'bg-red-50 text-red-700',
     info: 'bg-blue-50 text-blue-700',
   };
 
   return (
     <span
       className={cn(
-        'inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium',
+        'inline-flex items-center rounded-lg px-3 py-1 text-xs font-semibold',
         variants[effectiveVariant],
         className
       )}
