@@ -84,7 +84,7 @@ export const LoginPage: React.FC = () => {
             />
 
             {/* Password Input */}
-            <div>
+            <div className="relative">
               <Input
                 label="Password"
                 type={showPassword ? 'text' : 'password'}
