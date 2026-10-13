@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
-import { Button, Input, Select } from '@/components/ui';
 
 interface TrackingSearchProps {
   size?: 'default' | 'large';
@@ -43,36 +42,49 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({ size = 'default'
 
   return (
     <form onSubmit={handleSubmit} className="w-full">
-      <div className={`flex flex-col gap-4 ${isLarge ? 'max-w-3xl' : 'max-w-2xl'}`}>
+      <div className={`flex flex-col gap-3 ${isLarge ? 'max-w-2xl' : 'max-w-xl'}`}>
         <div className="flex flex-col sm:flex-row gap-3">
-          <div className="flex-1">
-            <Input
-              placeholder="Enter tracking number"
-              value={trackingNumber}
-              onChange={(e) => setTrackingNumber(e.target.value)}
-              error={error}
-              className={isLarge ? 'h-12 text-base' : ''}
-            />
-          </div>
-          <div className="w-full sm:w-48">
-            <Select
-              options={courierOptions}
-              value={courier}
-              onChange={(e) => setCourier(e.target.value)}
-              className={isLarge ? 'h-12' : ''}
-            />
-          </div>
-          <Button
-            type="submit"
-            size={isLarge ? 'lg' : 'md'}
-            className="sm:w-auto"
+          <input
+            type="text"
+            placeholder="Enter tracking number..."
+            value={trackingNumber}
+            onChange={(e) => setTrackingNumber(e.target.value)}
+            className={cn(
+              'flex-1 px-4 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200 outline-none',
+              isLarge ? 'py-3.5 text-base' : 'py-2.5 text-sm',
+              error && 'border-red-500 focus:border-red-500 focus:ring-red-100'
+            )}
+          />
+          <select
+            value={courier}
+            onChange={(e) => setCourier(e.target.value)}
+            className={cn(
+              'px-4 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200 outline-none bg-white',
+              isLarge ? 'py-3.5 text-base sm:w-56' : 'py-2.5 text-sm sm:w-48'
+            )}
           >
-            <Search className="h-5 w-5 mr-2" />
+            {courierOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <button
+            type="submit"
+            className={cn(
+              'bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2',
+              isLarge ? 'px-8 py-3.5 text-base' : 'px-6 py-2.5 text-sm'
+            )}
+          >
+            <Search className="h-5 w-5" />
             Track Package
-          </Button>
+          </button>
         </div>
-        {isLarge && (
-          <p className="text-sm text-text-secondary">
+        {error && (
+          <p className="text-sm text-red-600">{error}</p>
+        )}
+        {isLarge && !error && (
+          <p className="text-sm text-dark-500">
             Find your tracking number on your shipping receipt or confirmation email
           </p>
         )}
@@ -80,3 +92,7 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({ size = 'default'
     </form>
   );
 };
+
+function cn(...classes: (string | boolean | undefined)[]) {
+  return classes.filter(Boolean).join(' ');
+}
