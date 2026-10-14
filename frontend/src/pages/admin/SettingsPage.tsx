@@ -47,7 +47,7 @@ export const SettingsPage: React.FC = () => {
         {/* Profile Settings */}
         <Card>
           <div className="flex items-center gap-2 mb-6">
-            <User className="h-5 w-5 text-primary-blue" />
+            <User className="h-5 w-5 text-primary-600" />
             <h2 className="text-lg font-semibold text-text-primary">
               Profile Information
             </h2>
@@ -78,7 +78,7 @@ export const SettingsPage: React.FC = () => {
         {/* Password Change */}
         <Card>
           <div className="flex items-center gap-2 mb-6">
-            <Key className="h-5 w-5 text-primary-blue" />
+            <Key className="h-5 w-5 text-primary-600" />
             <h2 className="text-lg font-semibold text-text-primary">
               Change Password
             </h2>

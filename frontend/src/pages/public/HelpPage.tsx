@@ -67,7 +67,7 @@ export const HelpPage: React.FC = () => {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-primary-navy mb-4">
+            <h1 className="text-4xl font-bold text-text-primary mb-4">
               Help Center
             </h1>
             <p className="text-lg text-text-secondary">
@@ -81,7 +81,7 @@ export const HelpPage: React.FC = () => {
               <Card key={index} padding="none">
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-background-light transition-colors"
+                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-primary-50 transition-colors rounded-2xl"
                 >
                   <span className="font-semibold text-text-primary pr-4">
                     {faq.question}
@@ -109,7 +109,7 @@ export const HelpPage: React.FC = () => {
             <p className="text-text-secondary mb-4">
               Can't find the answer you're looking for? Contact our support team.
             </p>
-            <p className="text-primary-blue font-medium">
+            <p className="text-primary-600 font-medium">
               support@parceltrack.com
             </p>
           </Card>
