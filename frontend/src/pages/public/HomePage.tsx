@@ -12,43 +12,52 @@ export const HomePage: React.FC = () => {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="flex-1 bg-green-50/30 py-16 sm:py-20">
+      <section className="flex-1 bg-gradient-to-b from-green-50/50 to-white py-20 sm:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* Left Content */}
             <PageTransition>
               <div className="max-w-xl">
-                <h1 className="text-5xl sm:text-6xl font-bold text-dark-900 mb-4 leading-tight">
+                <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                  Real-time tracking updates
+                </div>
+                
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-dark-900 mb-4 leading-tight">
                   Every Package.
                 </h1>
-                <h1 className="text-5xl sm:text-6xl font-bold text-primary-600 mb-6 leading-tight">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-primary-600 mb-6 leading-tight">
                   One Place.
                 </h1>
-                <p className="text-lg text-dark-600 mb-8">
-                  Track your packages from multiple couriers with real-time updates and shipment history.
+                <p className="text-xl text-dark-600 mb-10 leading-relaxed">
+                  Track packages from multiple couriers with real-time updates, detailed shipment history, and instant notifications.
                 </p>
 
                 {/* Tracking Search */}
                 <FadeIn delay={200}>
-                  <div className="bg-white rounded-2xl shadow-medium p-6 mb-8 hover-lift">
+                  <div className="bg-white rounded-2xl shadow-large p-6 mb-8 border border-gray-100 hover-lift">
                     <TrackingSearch size="large" />
+                    <p className="text-xs text-dark-500 mt-3 text-center">
+                      Find your tracking number on your shipping receipt or confirmation email
+                    </p>
                   </div>
                 </FadeIn>
 
                 {/* Trust Indicators */}
                 <FadeIn delay={300}>
-                  <div className="grid grid-cols-4 gap-6">
+                  <div className="grid grid-cols-4 gap-4">
                     {[
-                      { icon: MapPin, label: 'Multiple locations' },
-                      { icon: Truck, label: 'Real-time updates' },
-                      { icon: Clock, label: 'Complete history' },
-                      { icon: ShieldCheck, label: 'No install needed' },
+                      { icon: MapPin, label: 'Multiple carriers', sublabel: '50+ supported' },
+                      { icon: Truck, label: 'Live tracking', sublabel: 'Real-time data' },
+                      { icon: Clock, label: 'Full history', sublabel: 'Complete timeline' },
+                      { icon: ShieldCheck, label: 'Secure', sublabel: 'No signup needed' },
                     ].map((item, idx) => (
-                      <div key={idx} className="text-center smooth-transition hover-scale">
-                        <div className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-full mb-2 shadow-sm border border-gray-100">
+                      <div key={idx} className="text-center smooth-transition hover-scale cursor-pointer">
+                        <div className="inline-flex items-center justify-center w-12 h-12 bg-white rounded-xl mb-2 shadow-sm border border-gray-100 group-hover:border-primary-200">
                           <item.icon className="h-5 w-5 text-primary-600" />
                         </div>
-                        <p className="text-xs font-medium text-dark-700">{item.label}</p>
+                        <p className="text-xs font-semibold text-dark-700 leading-tight">{item.label}</p>
+                        <p className="text-xs text-dark-500 mt-0.5">{item.sublabel}</p>
                       </div>
                     ))}
                   </div>
@@ -106,27 +115,58 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* How It Works */}
-      <section className="py-16 bg-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-dark-900 mb-3">How It Works</h2>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold text-dark-900 mb-4">How It Works</h2>
+              <p className="text-lg text-dark-600 max-w-2xl mx-auto">
+                Track your packages in three simple steps. No account required.
+              </p>
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto relative">
+            {/* Connecting lines for desktop */}
+            <div className="hidden md:block absolute top-10 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-200 via-primary-400 to-primary-200 -z-10"></div>
+            
             {[
-              { num: 1, title: 'Enter your tracking number', desc: 'Simply paste the tracking number from the courier\'s website' },
-              { num: 2, title: 'We fetch information', desc: 'Get real-time updates from the courier' },
-              { num: 3, title: 'View the delivery progress', desc: 'See complete tracking history' },
+              { 
+                num: 1, 
+                title: 'Enter tracking number', 
+                desc: 'Paste your tracking number from any supported courier. We\'ll automatically detect the carrier.',
+                icon: Package
+              },
+              { 
+                num: 2, 
+                title: 'We fetch the data', 
+                desc: 'Get real-time updates directly from the courier\'s system with complete tracking details.',
+                icon: Truck
+              },
+              { 
+                num: 3, 
+                title: 'View progress', 
+                desc: 'See your package journey with a visual timeline, current status, and estimated delivery.',
+                icon: CheckCircle
+              },
             ].map((step, idx) => (
               <FadeIn key={idx} delay={100 * (idx + 1)}>
-                <div className="text-center hover-lift">
-                  <div className="w-14 h-14 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-2xl font-bold mb-4 mx-auto smooth-transition hover:bg-primary-700">
-                    {step.num}
+                <div className="relative text-center group">
+                  {/* Step number badge */}
+                  <div className="relative inline-flex items-center justify-center mb-6">
+                    <div className="w-20 h-20 bg-primary-600 text-white rounded-2xl flex items-center justify-center text-3xl font-bold shadow-lg smooth-transition group-hover:bg-primary-700 group-hover:shadow-xl group-hover:scale-105 z-10">
+                      {step.num}
+                    </div>
+                    <div className="absolute inset-0 bg-primary-200 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
                   </div>
-                  <h3 className="text-lg font-semibold text-dark-900 mb-2">{step.title}</h3>
-                  <p className="text-sm text-dark-600">{step.desc}</p>
+                  
+                  {/* Icon */}
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-green-50 rounded-xl mb-4 group-hover:bg-green-100 smooth-transition">
+                    <step.icon className="h-7 w-7 text-primary-600" />
+                  </div>
+                  
+                  <h3 className="text-xl font-bold text-dark-900 mb-3">{step.title}</h3>
+                  <p className="text-dark-600 leading-relaxed">{step.desc}</p>
                 </div>
               </FadeIn>
             ))}
