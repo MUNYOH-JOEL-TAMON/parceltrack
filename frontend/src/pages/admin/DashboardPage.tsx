@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import { Card, CardHeader, CardTitle, CardContent, StatusBadge, Skeleton } from '@/components/ui';
+import { FadeIn, ScaleIn } from '@/components/PageTransition';
 import { DashboardStats } from '@/types';
 import { statsService } from '@/services/api';
 import { useToast } from '@/components/ui';
@@ -85,31 +86,36 @@ export const DashboardPage: React.FC = () => {
       <div className="space-y-6">
         {/* KPI Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {kpiCards.map((card) => {
+          {kpiCards.map((card, idx) => {
             const Icon = card.icon;
             return (
-              <Card key={card.title} padding="md">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm text-text-secondary mb-1">{card.title}</p>
-                    <p className="text-3xl font-bold text-text-primary">{card.value}</p>
+              <ScaleIn key={card.title} delay={idx * 100}>
+                <Card padding="md" className="hover-lift cursor-pointer">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-text-secondary mb-1">{card.title}</p>
+                      <p className="text-3xl font-bold text-text-primary smooth-transition">
+                        {card.value}
+                      </p>
+                    </div>
+                    <div className={`w-12 h-12 rounded-xl ${card.bgColor} flex items-center justify-center smooth-transition hover-scale`}>
+                      <Icon className={`h-6 w-6 ${card.color}`} />
+                    </div>
                   </div>
-                  <div className={`w-12 h-12 rounded-xl ${card.bgColor} flex items-center justify-center`}>
-                    <Icon className={`h-6 w-6 ${card.color}`} />
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </ScaleIn>
             );
           })}
         </div>
 
         {/* Status Breakdown Chart */}
         {stats?.statusBreakdown && stats.statusBreakdown.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Shipment Status Breakdown</CardTitle>
-            </CardHeader>
-            <CardContent>
+          <FadeIn delay={500}>
+            <Card className="hover-lift">
+              <CardHeader>
+                <CardTitle>Shipment Status Breakdown</CardTitle>
+              </CardHeader>
+              <CardContent>
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={stats.statusBreakdown}>
                   <CartesianGrid strokeDasharray="3 3" />
@@ -128,19 +134,22 @@ export const DashboardPage: React.FC = () => {
               </ResponsiveContainer>
             </CardContent>
           </Card>
+          </FadeIn>
         )}
 
         {/* Recent Shipments Placeholder */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Recent Shipments</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-text-secondary text-center py-8">
-              Recent shipments will be displayed here
-            </p>
-          </CardContent>
-        </Card>
+        <FadeIn delay={600}>
+          <Card className="hover-lift">
+            <CardHeader>
+              <CardTitle>Recent Shipments</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-text-secondary text-center py-8">
+                Recent shipments will be displayed here
+              </p>
+            </CardContent>
+          </Card>
+        </FadeIn>
       </div>
     </AdminLayout>
   );
