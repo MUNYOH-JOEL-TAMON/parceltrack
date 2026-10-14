@@ -5,7 +5,7 @@ import Shipment from '../models/Shipment.js';
 // @desc    Get dashboard statistics
 // @route   GET /api/stats/dashboard
 // @access  Private
-export const getDashboardStats = async (req: AuthRequest, res: Response): Promise<void> => {
+export const getDashboardStats = async (_req: AuthRequest, res: Response): Promise<void> => {
   try {
     // Get total counts
     const totalShipments = await Shipment.countDocuments();

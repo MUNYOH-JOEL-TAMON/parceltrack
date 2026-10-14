@@ -63,7 +63,7 @@ app.use('/api/stats', statsRoutes);
 app.use('/api/sync-logs', syncLogRoutes);
 
 // Health check endpoint
-app.get('/health', (req: Request, res: Response) => {
+app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({
     success: true,
     message: 'ParcelTrack API is running',
@@ -72,7 +72,7 @@ app.get('/health', (req: Request, res: Response) => {
 });
 
 // 404 handler
-app.use((req: Request, res: Response) => {
+app.use((_req: Request, res: Response) => {
   res.status(404).json({
     success: false,
     message: 'Route not found',
@@ -80,7 +80,7 @@ app.use((req: Request, res: Response) => {
 });
 
 // Error handler
-app.use((err: Error, req: Request, res: Response) => {
+app.use((err: Error, _req: Request, res: Response) => {
   console.error('Error:', err);
   res.status(500).json({
     success: false,

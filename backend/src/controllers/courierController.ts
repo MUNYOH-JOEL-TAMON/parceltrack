@@ -5,7 +5,7 @@ import Courier from '../models/Courier.js';
 // @desc    Get all couriers
 // @route   GET /api/couriers
 // @access  Private
-export const getAllCouriers = async (req: AuthRequest, res: Response): Promise<void> => {
+export const getAllCouriers = async (_req: AuthRequest, res: Response): Promise<void> => {
   try {
     const couriers = await Courier.find().sort({ name: 1 });
 
