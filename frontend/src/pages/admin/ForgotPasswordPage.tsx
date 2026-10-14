@@ -42,10 +42,10 @@ export const ForgotPasswordPage: React.FC = () => {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-background-main flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full">
-          <div className="bg-white rounded-lg shadow-sm border border-border p-8 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-status-success-bg rounded-full mb-4">
+          <div className="bg-white rounded-2xl shadow-medium border border-border p-8 text-center">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-status-success-bg rounded-xl mb-4">
               <CheckCircle2 className="h-8 w-8 text-status-success" />
             </div>
             <h2 className="text-2xl font-bold text-text-primary mb-2">
@@ -69,16 +69,16 @@ export const ForgotPasswordPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background-main flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-primary-100 flex items-center justify-center px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full">
         {/* Logo and Header */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="bg-primary-navy rounded-lg p-3">
-              <Package className="h-10 w-10 text-primary-blue" />
+            <div className="bg-primary-600 rounded-xl p-3 shadow-soft">
+              <Package className="h-10 w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-primary-navy mb-2">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">
             Forgot Password
           </h1>
           <p className="text-text-secondary">
@@ -87,7 +87,7 @@ export const ForgotPasswordPage: React.FC = () => {
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-lg shadow-sm border border-border p-8">
+        <div className="bg-white rounded-2xl shadow-medium border border-border p-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <Input
               label="Email Address"

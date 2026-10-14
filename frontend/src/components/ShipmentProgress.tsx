@@ -59,7 +59,7 @@ export const ShipmentProgress: React.FC<ShipmentProgressProps> = ({ status }) =>
         {/* Progress Line */}
         <div className="absolute top-6 left-0 right-0 h-0.5 bg-border -z-10" />
         <div
-          className="absolute top-6 left-0 h-0.5 bg-primary-blue -z-10 transition-all duration-500"
+          className="absolute top-6 left-0 h-0.5 bg-primary-600 -z-10 transition-all duration-500"
           style={{
             width: isException ? '0%' : `${(milestones.filter(m => getStepStatus(m.key) === 'completed').length / (milestones.length - 1)) * 100}%`
           }}
@@ -75,7 +75,7 @@ export const ShipmentProgress: React.FC<ShipmentProgressProps> = ({ status }) =>
                 className={cn(
                   'w-12 h-12 rounded-full flex items-center justify-center mb-2 transition-all duration-300',
                   stepStatus === 'completed' && 'bg-status-success text-white',
-                  stepStatus === 'active' && 'bg-primary-blue text-white ring-4 ring-primary-blue/20',
+                  stepStatus === 'active' && 'bg-primary-600 text-white ring-4 ring-primary-200',
                   stepStatus === 'pending' && 'bg-gray-200 text-text-secondary',
                   isException && stepStatus === 'active' && 'bg-status-warning ring-status-warning/20'
                 )}

@@ -20,14 +20,14 @@ export const TrackingTimeline: React.FC<TrackingTimelineProps> = ({ events }) =>
       case 'delivered':
         return <CheckCircle2 className="h-5 w-5 text-status-success" />;
       case 'out_for_delivery':
-        return <MapPin className="h-5 w-5 text-primary-blue" />;
+        return <MapPin className="h-5 w-5 text-primary-600" />;
       case 'in_transit':
-        return <Truck className="h-5 w-5 text-primary-blue" />;
+        return <Truck className="h-5 w-5 text-primary-600" />;
       case 'exception':
       case 'delayed':
         return <AlertCircle className="h-5 w-5 text-status-warning" />;
       case 'picked_up':
-        return <Package className="h-5 w-5 text-primary-blue" />;
+        return <Package className="h-5 w-5 text-primary-600" />;
       default:
         return <Clock className="h-5 w-5 text-text-secondary" />;
     }
@@ -47,7 +47,7 @@ export const TrackingTimeline: React.FC<TrackingTimelineProps> = ({ events }) =>
         <div key={event._id} className="flex gap-4">
           {/* Timeline Line */}
           <div className="flex flex-col items-center">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-background-light border-2 border-primary-blue">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary-50 border-2 border-primary-600">
               {getStatusIcon(event.status)}
             </div>
             {index < events.length - 1 && (
@@ -57,7 +57,7 @@ export const TrackingTimeline: React.FC<TrackingTimelineProps> = ({ events }) =>
 
           {/* Event Content */}
           <div className="flex-1 pb-6">
-            <div className="bg-white rounded-lg border border-border p-4 hover:shadow-sm transition-shadow">
+            <div className="bg-white rounded-xl border border-border p-4 hover:shadow-soft transition-shadow">
               <h4 className="font-semibold text-text-primary mb-1">
                 {event.description}
               </h4>
@@ -69,7 +69,7 @@ export const TrackingTimeline: React.FC<TrackingTimelineProps> = ({ events }) =>
               )}
               <div className="flex items-center gap-4 text-xs text-text-secondary">
                 <span>{formatDateTime(event.timestamp)}</span>
-                <span className="text-primary-blue">{formatTimeAgo(event.timestamp)}</span>
+                <span className="text-primary-600">{formatTimeAgo(event.timestamp)}</span>
               </div>
               {event.courierStatus && (
                 <p className="text-xs text-text-secondary mt-2 italic">
