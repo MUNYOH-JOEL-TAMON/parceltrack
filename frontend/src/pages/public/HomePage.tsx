@@ -58,7 +58,7 @@ export const HomePage: React.FC = () => {
 
             {/* Right Image/Illustration */}
             <div className="hidden lg:flex items-center justify-center">
-              <div className="relative w-full max-w-md float-animation">
+              <div className="relative w-full max-w-md animate-float">
                 {/* Package illustration */}
                 <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto drop-shadow-lg">
                   {/* Delivery truck/van in background */}

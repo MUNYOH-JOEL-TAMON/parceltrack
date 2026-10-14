@@ -73,7 +73,7 @@ const ToastItem: React.FC<ToastItemProps> = ({ toast, onClose }) => {
   return (
     <div
       className={cn(
-        'pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg border-l-4 animate-in slide-in-from-right',
+        'pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl shadow-large border-l-4 animate-slide-down glass',
         styles[toast.type]
       )}
     >
