@@ -106,7 +106,7 @@ function mapAfterShipStatus(tag: string): ShipmentStatus {
  * Generate mock tracking data for development/testing
  */
 function getMockTrackingData(
-  trackingNumber: string,
+  _trackingNumber: string,
   courierSlug?: string
 ): TrackingData {
   const now = new Date();

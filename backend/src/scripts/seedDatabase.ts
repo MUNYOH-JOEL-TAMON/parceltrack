@@ -18,7 +18,7 @@ const seedDatabase = async () => {
     console.log('🗑️  Cleared existing data');
 
     // Create admin user
-    const adminUser = await User.create({
+    await User.create({
       email: 'admin@parceltrack.com',
       password: await hashPassword('Admin123!'),
       name: 'Admin User',
