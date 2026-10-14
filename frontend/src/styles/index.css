@@ -38,15 +38,6 @@
     @apply bg-dark-900/80 backdrop-blur-md border border-white/10;
   }
 
-  /* Page transitions */
-  .page-transition {
-    @apply animate-fade-in;
-  }
-
-  .page-content {
-    @apply animate-slide-up;
-  }
-
   /* Buttons with enhanced hover effects */
   .btn-primary {
     @apply bg-primary-600 hover:bg-primary-700 text-white font-medium px-6 py-2.5 rounded-xl;
@@ -100,7 +91,7 @@
   /* Loading spinner */
   .spinner {
     @apply inline-block w-5 h-5 border-2 border-primary-200 border-t-primary-600 rounded-full;
-    @apply animate-spin;
+    animation: spin 1s linear infinite;
   }
 
   .spinner-large {
@@ -109,13 +100,13 @@
 
   /* Skeleton loader */
   .skeleton {
-    @apply bg-dark-100 rounded animate-pulse;
+    @apply bg-dark-100 rounded;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   /* Toast notification */
   .toast {
     @apply glass rounded-xl shadow-large px-4 py-3;
-    @apply animate-slide-down;
   }
 
   /* Navigation hover */
@@ -137,31 +128,6 @@
   /* Smooth transitions */
   .smooth-transition {
     @apply transition-all duration-250 ease-in-out;
-  }
-
-  /* Floating animation */
-  .float-animation {
-    @apply animate-float;
-  }
-
-  /* Progress line animation */
-  .progress-line {
-    @apply transition-all duration-500 ease-in-out;
-  }
-
-  /* Fade in animation */
-  .fade-in {
-    @apply animate-fade-in;
-  }
-
-  /* Slide up animation */
-  .slide-up {
-    @apply animate-slide-up;
-  }
-
-  /* Scale in animation */
-  .scale-in {
-    @apply animate-scale-in;
   }
 }
 
