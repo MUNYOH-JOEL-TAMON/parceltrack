@@ -9,6 +9,7 @@ export { Modal } from './Modal';
 export { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from './Table';
 export { ToastProvider, useToast } from './Toast';
 export { Skeleton, TableSkeleton, CardSkeleton } from './LoadingSkeleton';
+export { Spinner } from './Spinner';
 export { EmptyState } from './EmptyState';
 export { ErrorState } from './ErrorState';
 export { Pagination } from './Pagination';
