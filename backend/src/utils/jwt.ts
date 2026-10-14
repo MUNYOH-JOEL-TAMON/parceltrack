@@ -1,9 +1,10 @@
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 
 export const generateToken = (userId: string): string => {
-  return jwt.sign({ id: userId }, process.env.JWT_SECRET!, {
+  const options: SignOptions = {
     expiresIn: process.env.JWT_EXPIRE || '7d',
-  });
+  };
+  return jwt.sign({ id: userId }, process.env.JWT_SECRET!, options);
 };
 
 export const verifyToken = (token: string): any => {
