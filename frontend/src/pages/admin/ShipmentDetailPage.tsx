@@ -178,7 +178,7 @@ export const ShipmentDetailPage: React.FC = () => {
                 </span>
                 <button
                   onClick={handleCopyTracking}
-                  className="text-primary-blue hover:text-blue-700 transition-colors"
+                  className="text-primary-600 hover:text-primary-700 transition-colors"
                 >
                   <Copy className="h-4 w-4" />
                 </button>
@@ -217,7 +217,7 @@ export const ShipmentDetailPage: React.FC = () => {
             <div className="mt-4 pt-4 border-t border-border">
               <p className="text-text-secondary text-sm mb-1">Current Location</p>
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary-blue" />
+                <MapPin className="h-4 w-4 text-primary-600" />
                 <p className="font-medium text-text-primary">{shipment.currentLocation}</p>
               </div>
             </div>

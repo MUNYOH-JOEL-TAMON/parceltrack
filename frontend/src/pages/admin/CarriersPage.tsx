@@ -76,8 +76,8 @@ export const CarriersPage: React.FC = () => {
             <Card key={courier._id} padding="md">
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-primary-navy rounded-lg flex items-center justify-center">
-                    <Truck className="h-6 w-6 text-primary-blue" />
+                  <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center">
+                    <Truck className="h-6 w-6 text-primary-600" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-text-primary">{courier.name}</h3>
