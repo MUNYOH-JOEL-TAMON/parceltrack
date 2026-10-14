@@ -140,30 +140,75 @@ export const HomePage: React.FC = () => {
           <FadeIn>
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold text-dark-900 mb-3">Supported Couriers</h2>
+              <p className="text-dark-600">Track packages from major courier services worldwide</p>
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
             {[
-              { name: 'DHL', color: 'bg-yellow-400' },
-              { name: 'FedEx', color: 'bg-purple-600' },
-              { name: 'UPS', color: 'bg-amber-600' },
-              { name: 'USPS', color: 'bg-blue-600' },
-              { name: 'Aramex', color: 'bg-red-600' },
+              { 
+                name: 'DHL', 
+                logo: 'https://www.dhl.com/content/dam/dhl/global/core/images/logos/dhl-logo.svg',
+                color: 'bg-white'
+              },
+              { 
+                name: 'FedEx', 
+                logo: 'https://www.fedex.com/content/dam/fedex-com/logos/logo.png',
+                color: 'bg-white'
+              },
+              { 
+                name: 'UPS', 
+                logo: 'https://www.ups.com/assets/resources/webcontent/images/ups-logo.svg',
+                color: 'bg-white'
+              },
+              { 
+                name: 'USPS', 
+                logo: 'https://www.usps.com/assets/images/usps-logo.svg',
+                color: 'bg-white'
+              },
+              { 
+                name: 'Aramex', 
+                logo: 'https://www.aramex.com/content/dam/aramex/logos/aramex-logo.svg',
+                color: 'bg-white'
+              },
             ].map((courier, idx) => (
               <FadeIn key={courier.name} delay={100 * idx}>
-                <div className="bg-white rounded-xl p-6 text-center border border-gray-100 card-interactive">
-                  <div className={`w-14 h-14 ${courier.color} rounded-lg mx-auto mb-3 flex items-center justify-center shadow-sm smooth-transition hover:shadow-md`}>
-                    <span className="text-white font-bold text-lg">{courier.name.charAt(0)}</span>
+                <div className="bg-white rounded-2xl p-6 text-center border border-gray-200 card-interactive group">
+                  <div className="h-16 flex items-center justify-center mb-4">
+                    <img 
+                      src={courier.logo} 
+                      alt={`${courier.name} logo`}
+                      className="max-h-12 max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+                      onError={(e) => {
+                        // Fallback to text if logo fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const fallback = document.createElement('div');
+                        fallback.className = 'text-2xl font-bold text-dark-900';
+                        fallback.textContent = courier.name;
+                        target.parentElement?.appendChild(fallback);
+                      }}
+                    />
                   </div>
-                  <h3 className="font-semibold text-dark-900 text-sm mb-1">{courier.name}</h3>
-                  <span className="inline-block px-2 py-1 bg-green-50 text-green-700 text-xs font-medium rounded smooth-transition">
+                  <h3 className="font-semibold text-dark-900 text-sm mb-2">{courier.name}</h3>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-50 text-green-700 text-xs font-medium rounded-full smooth-transition group-hover:bg-green-100">
+                    <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
                     Connected
                   </span>
                 </div>
               </FadeIn>
             ))}
           </div>
+
+          {/* Additional info */}
+          <FadeIn delay={500}>
+            <div className="mt-12 text-center">
+              <p className="text-sm text-dark-500 mb-2">And many more carriers worldwide</p>
+              <a href="/help" className="text-sm text-primary-600 hover:text-primary-700 font-medium smooth-transition hover:underline">
+                View all supported carriers →
+              </a>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
