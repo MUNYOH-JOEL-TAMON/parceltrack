@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Package, 
-  TrendingUp, 
   Shield, 
   Clock, 
   MapPin, 
@@ -12,9 +11,9 @@ import {
   Box,
   Home
 } from 'lucide-react';
-import Navbar from '../../components/layout/Navbar';
-import Footer from '../../components/layout/Footer';
-import Button from '../../components/ui/Button';
+import { Navbar } from '../../components/layout/Navbar';
+import { Footer } from '../../components/layout/Footer';
+import { Button } from '../../components/ui/Button';
 
 const BentoHomePage: React.FC = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -441,4 +440,4 @@ const BentoHomePage: React.FC = () => {
   );
 };
 
-export default BentoHomePage;
+export { BentoHomePage };
