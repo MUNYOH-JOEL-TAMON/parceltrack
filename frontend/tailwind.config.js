@@ -8,51 +8,37 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
-          DEFAULT: '#16a34a',
+          50: '#F0FDF4',
+          100: '#DCFCE7',
+          600: '#15803D',
+          700: '#166534',
+          DEFAULT: '#15803D',
         },
         dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617',
-          DEFAULT: '#0f172a',
+          50: '#F8FAFC',
+          100: '#F1F5F9',
+          200: '#E2E8F0',
+          500: '#64748B',
+          900: '#111827',
+          DEFAULT: '#111827',
         },
-        accent: {
-          blue: '#3b82f6',
-          yellow: '#fbbf24',
-          orange: '#f97316',
-          red: '#ef4444',
-          purple: '#a855f7',
-        }
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+      },
+      fontSize: {
+        'hero': ['84px', { lineHeight: '1', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'hero-mobile': ['40px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
       },
       boxShadow: {
         'soft': '0 2px 8px rgba(0, 0, 0, 0.04)',
         'medium': '0 4px 16px rgba(0, 0, 0, 0.08)',
         'large': '0 8px 32px rgba(0, 0, 0, 0.12)',
+        'floating': '0 12px 48px rgba(0, 0, 0, 0.08)',
       },
       borderRadius: {
-        'xl': '1rem',
-        '2xl': '1.5rem',
+        'xl': '16px',
+        '2xl': '24px',
       },
       keyframes: {
         fadeIn: {
@@ -75,9 +61,17 @@ export default {
           '0%, 100%': { transform: 'translateY(0px)' },
           '50%': { transform: 'translateY(-15px)' },
         },
-        pulseSoft: {
+        drawLine: {
+          '0%': { strokeDashoffset: '1000' },
+          '100%': { strokeDashoffset: '0' },
+        },
+        pulse: {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0.7' },
+          '50%': { opacity: '0.5' },
+        },
+        moveAlongPath: {
+          '0%': { offsetDistance: '0%' },
+          '100%': { offsetDistance: '100%' },
         },
       },
       animation: {
@@ -86,8 +80,8 @@ export default {
         'slide-down': 'slideDown 0.4s ease-out',
         'scale-in': 'scaleIn 0.3s ease-out',
         'float': 'float 4s ease-in-out infinite',
-        'spin-slow': 'spin 2s linear infinite',
-        'pulse-soft': 'pulseSoft 2s ease-in-out infinite',
+        'draw-line': 'drawLine 2s ease-out forwards',
+        'pulse': 'pulse 2s ease-in-out infinite',
       },
       backdropBlur: {
         xs: '2px',
@@ -96,3 +90,4 @@ export default {
   },
   plugins: [],
 }
+

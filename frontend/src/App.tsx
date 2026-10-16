@@ -5,7 +5,7 @@ import { ToastProvider } from './components/ui';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
 // Public pages
-import { HomePage } from './pages/public/HomePage';
+import { NewHomePage } from './pages/public/NewHomePage';
 import { TrackingPage } from './pages/public/TrackingPage';
 import { HelpPage } from './pages/public/HelpPage';
 
@@ -32,7 +32,7 @@ function App() {
         <AuthProvider>
           <Routes>
             {/* Public routes */}
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<NewHomePage />} />
             <Route path="/track" element={<TrackingPage />} />
             <Route path="/help" element={<HelpPage />} />
 
