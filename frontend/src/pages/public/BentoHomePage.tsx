@@ -182,7 +182,7 @@ export const BentoHomePage: React.FC = () => {
       </section>
 
       {/* Supported Carriers Section */}
-      <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-50">
+      <section id="carriers" className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-gray-50 scroll-mt-16">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4 px-4">
@@ -372,29 +372,10 @@ export const BentoHomePage: React.FC = () => {
             </p>
           </div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-
-            {/* Quick Feature - No Account */}
-            <div className="bg-white border-2 border-gray-200 rounded-xl md:rounded-2xl p-5 md:p-6 hover:border-green-600 hover:shadow-lg transition-all">
-              <Shield className="text-green-600 mb-3 md:mb-4" size={28} />
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">No Account Required</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                Track packages instantly. Just paste your tracking number and get results in seconds.
-              </p>
-            </div>
-
-            {/* Quick Feature - Real-Time */}
-            <div className="bg-white border-2 border-gray-200 rounded-xl md:rounded-2xl p-5 md:p-6 hover:border-green-600 hover:shadow-lg transition-all">
-              <Zap className="text-green-600 mb-3 md:mb-4" size={28} />
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">Real-Time Updates</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                Live tracking with automatic status updates. Never miss a delivery milestone.
-              </p>
-            </div>
-
-            {/* Interactive Feature - Shipment Journey Simulator */}
-            <div className="lg:col-span-2 bg-gray-900 rounded-xl md:rounded-2xl p-6 md:p-8 text-white flex flex-col justify-between border border-gray-800 shadow-md">
+          {/* Bento Grid: Balanced 7/5 Asymmetric Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            {/* Interactive Feature - Shipment Journey Simulator (7 Cols) */}
+            <div className="lg:col-span-7 bg-gray-900 rounded-2xl p-6 sm:p-7 text-white flex flex-col justify-between border border-gray-800 shadow-md">
               <div>
                 {/* Simulator Header & Switcher */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-gray-800 gap-3">
@@ -476,28 +457,83 @@ export const BentoHomePage: React.FC = () => {
               </div>
 
               {/* Bottom Micro Hint */}
-              <div className="pt-3 mt-2 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
+              <div className="pt-3 mt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
                 <span>FedEx Home Delivery • #794820183921</span>
                 <span className="text-green-400 text-[11px]">Real-time Event Stream</span>
               </div>
             </div>
 
-            {/* Quick Feature - Global */}
-            <div className="bg-gradient-to-br from-green-500 to-green-600 rounded-xl md:rounded-2xl p-5 md:p-6 text-white">
-              <Globe className="mb-3 md:mb-4" size={28} />
-              <h3 className="text-lg md:text-xl font-bold mb-2">Global Coverage</h3>
-              <p className="text-sm md:text-base text-green-50 leading-relaxed">
-                Track international shipments with support for carriers in 200+ countries.
-              </p>
-            </div>
+            {/* Substantive Feature Cards: Compact 2x2 Grid (5 Cols) */}
+            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* Card 1: Zero Account Friction */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between hover:border-green-600 hover:shadow-sm transition-all group">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center text-green-600 mb-3 group-hover:scale-105 transition-transform">
+                    <Shield size={20} />
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">No Account Required</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    Track shipments directly without signing up. Paste any tracking code and access live delivery logs instantly.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-green-700 font-medium">
+                  <span>Zero Signup Wall</span>
+                  <span className="text-gray-400 font-mono">100% Free</span>
+                </div>
+              </div>
 
-            {/* Quick Feature - API */}
-            <div className="bg-white border-2 border-gray-200 rounded-xl md:rounded-2xl p-5 md:p-6 hover:border-green-600 hover:shadow-lg transition-all">
-              <TrendingUp className="text-green-600 mb-3 md:mb-4" size={28} />
-              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">Developer API</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                RESTful API for integration with your systems. Webhooks, batch tracking, and more.
-              </p>
+              {/* Card 2: Live Dispatch Updates */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between hover:border-green-600 hover:shadow-sm transition-all group">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center text-green-600 mb-3 group-hover:scale-105 transition-transform">
+                    <Zap size={20} />
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">Real-Time Updates</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    Direct courier synchronization polls official scanning checkpoints so you never miss an out-for-delivery milestone.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-gray-100 flex items-center gap-1.5 text-[11px] text-green-700 font-medium">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
+                  <span>Sub-Minute Polling</span>
+                </div>
+              </div>
+
+              {/* Card 3: 1,000+ Carriers */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between hover:border-green-600 hover:shadow-sm transition-all group">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center text-green-600 mb-3 group-hover:scale-105 transition-transform">
+                    <Globe size={20} />
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">Global Coverage</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    Direct integration with postal services, international couriers, and regional carriers across 200+ countries.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px] text-gray-500 font-mono">
+                  <span>200+ Countries</span>
+                  <span className="text-green-600 font-semibold">1,000+ Carriers</span>
+                </div>
+              </div>
+
+              {/* Card 4: Developer Webhooks */}
+              <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between hover:border-green-600 hover:shadow-sm transition-all group">
+                <div>
+                  <div className="w-10 h-10 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center text-green-600 mb-3 group-hover:scale-105 transition-transform">
+                    <TrendingUp size={20} />
+                  </div>
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5">Developer API</h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    Connect tracking feeds directly into your e-commerce platform via our lightweight REST API and automated webhooks.
+                  </p>
+                </div>
+                <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
+                  <span className="font-mono text-green-600 font-semibold bg-green-50 px-1.5 py-0.5 rounded border border-green-200">
+                    REST API
+                  </span>
+                  <span className="text-gray-500 font-mono">JSON Webhooks</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
