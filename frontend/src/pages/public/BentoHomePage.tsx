@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  Package, 
   Shield, 
   Clock, 
-  MapPin, 
   Search,
   TrendingUp,
   Zap,
   Globe,
-  ArrowRight,
   CheckCircle2
 } from 'lucide-react';
 import { Navbar } from '../../components/layout/Navbar';
@@ -260,168 +257,7 @@ export const BentoHomePage: React.FC = () => {
           </div>
         </div>
       </section>
-            {/* UPS */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/ups.com/w/400/h/400/theme/dark/icon.jpeg?t=1736881242863" 
-                alt="UPS" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-yellow-800">UPS</span>';
-                }}
-              />
-            </div>
 
-            {/* FedEx */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/fedex.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
-                alt="FedEx" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-purple-600">FedEx</span>';
-                }}
-              />
-            </div>
-
-            {/* DHL */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/dhl.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
-                alt="DHL" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-red-600">DHL</span>';
-                }}
-              />
-            </div>
-
-            {/* USPS */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/usps.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
-                alt="USPS" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-blue-700">USPS</span>';
-                }}
-              />
-            </div>
-
-            {/* Amazon Logistics */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/amazon.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
-                alt="Amazon" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-orange-500">Amazon</span>';
-                }}
-              />
-            </div>
-
-            {/* China Post */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://www.chinapost.com.cn/res/pc/img/logo.png" 
-                alt="China Post" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-green-700">China Post</span>';
-                }}
-              />
-            </div>
-
-            {/* Royal Mail */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/royalmail.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
-                alt="Royal Mail" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-red-600">Royal Mail</span>';
-                }}
-              />
-            </div>
-
-            {/* Canada Post */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/canadapost.ca/w/400/h/400/theme/dark/icon.png?t=1736881242863" 
-                alt="Canada Post" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-red-600">Canada Post</span>';
-                }}
-              />
-            </div>
-
-            {/* Australia Post */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/auspost.com.au/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
-                alt="Australia Post" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-red-600">AusPost</span>';
-                }}
-              />
-            </div>
-
-            {/* La Poste */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/laposte.fr/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
-                alt="La Poste" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-yellow-500">La Poste</span>';
-                }}
-              />
-            </div>
-
-            {/* Deutsche Post DHL */}
-            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
-              <img 
-                src="https://cdn.brandfetch.io/deutschepost.de/w/400/h/400/theme/dark/icon.png?t=1736881242863" 
-                alt="Deutsche Post" 
-                className="h-12 w-auto object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-yellow-400">Deutsche Post</span>';
-                }}
-              />
-            </div>
-
-            {/* +989 More */}
-            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center border border-green-500 min-h-[80px] md:min-h-[100px]">
-              <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white mb-0.5 md:mb-1">+989</div>
-                <div className="text-[10px] md:text-xs text-green-100 font-medium">more carriers</div>
-              </div>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center px-4">
-            <Link to="/track">
-              <Button size="lg" className="px-6 md:px-8 w-full sm:w-auto">
-                Start Tracking Now
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* Feature Grid - Professional Bento Layout */}
       <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6 bg-white">
@@ -619,3 +455,5 @@ export const BentoHomePage: React.FC = () => {
     </div>
   );
 };
+
+
