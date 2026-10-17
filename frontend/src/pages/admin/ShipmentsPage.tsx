@@ -25,7 +25,7 @@ import { Plus, Search, Filter, Package } from 'lucide-react';
 
 export const ShipmentsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const { showToast } = useToast();
 
   const [shipments, setShipments] = useState<Shipment[]>([]);

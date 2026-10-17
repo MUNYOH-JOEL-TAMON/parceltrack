@@ -3,7 +3,7 @@ import { AdminLayout } from '@/components/layout/AdminLayout';
 import { Card, Button, Input } from '@/components/ui';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/components/ui';
-import { User, Mail, Key } from 'lucide-react';
+import { User, Key } from 'lucide-react';
 
 export const SettingsPage: React.FC = () => {
   const { user } = useAuth();

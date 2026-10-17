@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AdminLayout } from '@/components/layout/AdminLayout';
-import { Card, CardHeader, CardTitle, CardContent, StatusBadge, Skeleton } from '@/components/ui';
+import { Card, CardHeader, CardTitle, CardContent, Skeleton } from '@/components/ui';
 import { FadeIn, ScaleIn } from '@/components/PageTransition';
 import { DashboardStats } from '@/types';
 import { statsService } from '@/services/api';
