@@ -194,155 +194,155 @@ export const BentoHomePage: React.FC = () => {
           </div>
 
           {/* Carrier Logo Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 lg:gap-6 mb-8 md:mb-12">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-4 lg:gap-6 mb-8 md:mb-12">
             {/* UPS */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/ups.com/w/400/h/400/theme/dark/icon.jpeg?t=1736881242863" 
                 alt="UPS" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg md:text-xl lg:text-2xl font-bold text-yellow-800">UPS</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-yellow-800 truncate px-1">UPS</span>';
                 }}
               />
             </div>
 
             {/* FedEx */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/fedex.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
                 alt="FedEx" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg md:text-xl lg:text-2xl font-bold text-purple-600">FedEx</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-purple-600 truncate px-1">FedEx</span>';
                 }}
               />
             </div>
 
             {/* DHL */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/dhl.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
                 alt="DHL" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg md:text-xl lg:text-2xl font-bold text-red-600">DHL</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-red-600 truncate px-1">DHL</span>';
                 }}
               />
             </div>
 
             {/* USPS */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/usps.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
                 alt="USPS" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg md:text-xl lg:text-2xl font-bold text-blue-700">USPS</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-blue-700 truncate px-1">USPS</span>';
                 }}
               />
             </div>
 
             {/* Amazon Logistics */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/amazon.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
                 alt="Amazon" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg md:text-xl lg:text-2xl font-bold text-orange-500">Amazon</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-orange-500 truncate px-1">Amazon</span>';
                 }}
               />
             </div>
 
             {/* China Post */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://www.chinapost.com.cn/res/pc/img/logo.png" 
                 alt="China Post" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-sm md:text-base lg:text-lg font-bold text-green-700">China Post</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-green-700 truncate px-1">China Post</span>';
                 }}
               />
             </div>
 
             {/* Royal Mail */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/royalmail.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
                 alt="Royal Mail" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-sm md:text-base lg:text-lg font-bold text-red-600">Royal Mail</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-red-600 truncate px-1">Royal Mail</span>';
                 }}
               />
             </div>
 
             {/* Canada Post */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/canadapost.ca/w/400/h/400/theme/dark/icon.png?t=1736881242863" 
                 alt="Canada Post" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-sm md:text-base lg:text-lg font-bold text-red-600">Canada Post</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-red-600 truncate px-1">Canada Post</span>';
                 }}
               />
             </div>
 
             {/* Australia Post */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/auspost.com.au/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
                 alt="Australia Post" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-sm md:text-base lg:text-lg font-bold text-red-600">AusPost</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-red-600 truncate px-1">AusPost</span>';
                 }}
               />
             </div>
 
             {/* La Poste */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/laposte.fr/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
                 alt="La Poste" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-sm md:text-base lg:text-lg font-bold text-yellow-500">La Poste</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-yellow-500 truncate px-1">La Poste</span>';
                 }}
               />
             </div>
 
             {/* Deutsche Post DHL */}
-            <div className="bg-white rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-white rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <img 
                 src="https://cdn.brandfetch.io/deutschepost.de/w/400/h/400/theme/dark/icon.png?t=1736881242863" 
                 alt="Deutsche Post" 
-                className="h-8 md:h-10 lg:h-12 w-auto object-contain"
+                className="h-7 sm:h-8 md:h-10 lg:h-12 w-auto max-w-[85%] object-contain"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';
-                  e.currentTarget.parentElement!.innerHTML = '<span class="text-sm md:text-base lg:text-lg font-bold text-yellow-400">Deutsche Post</span>';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-xs sm:text-sm md:text-base lg:text-lg font-bold text-yellow-400 truncate px-1">Deutsche Post</span>';
                 }}
               />
             </div>
 
             {/* +989 More */}
-            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center border border-green-500 min-h-[80px] md:min-h-[100px]">
+            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-lg md:rounded-xl p-3 sm:p-4 md:p-6 flex items-center justify-center border border-green-500 min-h-[72px] sm:min-h-[85px] md:min-h-[100px]">
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-white mb-0.5 md:mb-1">+989</div>
-                <div className="text-[10px] md:text-xs text-green-100 font-medium">more carriers</div>
+                <div className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-0.5 md:mb-1">+989</div>
+                <div className="text-[9px] sm:text-[10px] md:text-xs text-green-100 font-medium">more carriers</div>
               </div>
             </div>
           </div>
@@ -375,20 +375,22 @@ export const BentoHomePage: React.FC = () => {
           {/* Bento Grid: Balanced 7/5 Asymmetric Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
             {/* Interactive Feature - Shipment Journey Simulator (7 Cols) */}
-            <div className="lg:col-span-7 bg-gray-900 rounded-2xl p-6 sm:p-7 text-white flex flex-col justify-between border border-gray-800 shadow-md">
+            <div className="lg:col-span-7 bg-gray-900 rounded-2xl p-5 sm:p-6 md:p-7 text-white flex flex-col justify-between border border-gray-800 shadow-md">
               <div>
                 {/* Simulator Header & Switcher */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-gray-800 gap-3">
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2.5 min-w-0">
                     <Clock className="text-green-500 flex-shrink-0" size={24} />
-                    <div>
-                      <h3 className="text-lg md:text-xl font-bold">Interactive Shipment Simulator</h3>
+                    <div className="min-w-0">
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-white truncate">
+                        Interactive Shipment Simulator
+                      </h3>
                       <p className="text-xs text-gray-400">Test live tracking milestone updates</p>
                     </div>
                   </div>
 
-                  {/* Stage Switcher Buttons */}
-                  <div className="flex items-center gap-1.5 bg-gray-800/90 p-1 rounded-lg border border-gray-700/60 self-start sm:self-auto">
+                  {/* Stage Switcher Buttons: Equal 3-col tabs on mobile, flex on sm */}
+                  <div className="w-full sm:w-auto grid grid-cols-3 sm:flex items-center gap-1 sm:gap-1.5 bg-gray-800/90 p-1 rounded-lg border border-gray-700/60 self-start sm:self-auto">
                     {(['in_transit', 'out_for_delivery', 'delivered'] as const).map((stageKey) => {
                       const isSelected = journeyStage === stageKey;
                       const stageInfo = JOURNEY_STAGES[stageKey];
@@ -397,7 +399,7 @@ export const BentoHomePage: React.FC = () => {
                           key={stageKey}
                           type="button"
                           onClick={() => setJourneyStage(stageKey)}
-                          className={`px-2.5 py-1 rounded text-xs font-medium transition-all ${
+                          className={`px-1.5 sm:px-2.5 py-1 rounded text-[11px] sm:text-xs font-medium transition-all text-center truncate ${
                             isSelected
                               ? 'bg-green-600 text-white shadow-sm'
                               : 'text-gray-400 hover:text-white hover:bg-gray-700/60'
@@ -411,10 +413,12 @@ export const BentoHomePage: React.FC = () => {
                 </div>
 
                 {/* Progress Status Bar */}
-                <div className="bg-gray-800/60 rounded-xl p-3.5 mb-4 border border-gray-800">
-                  <div className="flex items-center justify-between text-xs mb-1.5">
-                    <span className="font-semibold text-white">{activeStageData.statusText}</span>
-                    <span className="text-green-400 font-mono text-[11px]">{activeStageData.eta}</span>
+                <div className="bg-gray-800/60 rounded-xl p-3 sm:p-3.5 mb-4 border border-gray-800">
+                  <div className="flex flex-wrap items-center justify-between text-xs gap-1.5 mb-2">
+                    <span className="font-semibold text-white text-xs sm:text-sm">{activeStageData.statusText}</span>
+                    <span className="text-green-400 font-mono text-[11px] bg-green-950/60 border border-green-800/50 px-2 py-0.5 rounded flex-shrink-0">
+                      {activeStageData.eta}
+                    </span>
                   </div>
                   <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
                     <div
@@ -429,7 +433,7 @@ export const BentoHomePage: React.FC = () => {
                   {activeStageData.events.map((evt, idx) => (
                     <div
                       key={idx}
-                      className={`flex items-start gap-3.5 pb-2.5 ${
+                      className={`flex items-start gap-3 pb-2.5 ${
                         idx !== activeStageData.events.length - 1 ? 'border-b border-gray-800/80' : ''
                       }`}
                     >
@@ -441,15 +445,17 @@ export const BentoHomePage: React.FC = () => {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between gap-2">
                           <p
-                            className={`text-sm truncate ${
+                            className={`text-xs sm:text-sm truncate ${
                               evt.isLatest ? 'font-semibold text-white' : 'text-gray-300'
                             }`}
                           >
                             {evt.title}
                           </p>
-                          <span className="text-[11px] text-gray-400 whitespace-nowrap font-mono">{evt.time}</span>
+                          <span className="text-[11px] text-gray-400 whitespace-nowrap font-mono flex-shrink-0">
+                            {evt.time}
+                          </span>
                         </div>
-                        <p className="text-xs text-gray-400 mt-0.5">{evt.location}</p>
+                        <p className="text-[11px] sm:text-xs text-gray-400 mt-0.5 truncate">{evt.location}</p>
                       </div>
                     </div>
                   ))}
@@ -457,14 +463,14 @@ export const BentoHomePage: React.FC = () => {
               </div>
 
               {/* Bottom Micro Hint */}
-              <div className="pt-3 mt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
-                <span>FedEx Home Delivery • #794820183921</span>
-                <span className="text-green-400 text-[11px]">Real-time Event Stream</span>
+              <div className="pt-3 mt-4 border-t border-gray-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] sm:text-xs text-gray-400">
+                <span className="truncate">FedEx Home Delivery • #794820183921</span>
+                <span className="text-green-400 text-[11px] flex-shrink-0">Real-time Event Stream</span>
               </div>
             </div>
 
             {/* Substantive Feature Cards: Compact 2x2 Grid (5 Cols) */}
-            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
               {/* Card 1: Zero Account Friction */}
               <div className="bg-white border border-gray-200 rounded-xl p-4 sm:p-5 flex flex-col justify-between hover:border-green-600 hover:shadow-sm transition-all group">
                 <div>

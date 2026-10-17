@@ -50,7 +50,7 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({ size = 'default'
             value={trackingNumber}
             onChange={(e) => setTrackingNumber(e.target.value)}
             className={cn(
-              'flex-1 px-4 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200 outline-none',
+              'flex-1 min-w-0 px-4 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200 outline-none',
               isLarge ? 'py-3.5 text-base' : 'py-2.5 text-sm',
               error && 'border-red-500 focus:border-red-500 focus:ring-red-100'
             )}
@@ -59,8 +59,8 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({ size = 'default'
             value={courier}
             onChange={(e) => setCourier(e.target.value)}
             className={cn(
-              'px-4 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200 outline-none bg-white',
-              isLarge ? 'py-3.5 text-base sm:w-56' : 'py-2.5 text-sm sm:w-48'
+              'px-4 rounded-xl border border-dark-200 focus:border-primary-500 focus:ring-2 focus:ring-primary-100 transition-all duration-200 outline-none bg-white flex-shrink-0',
+              isLarge ? 'py-3.5 text-base sm:w-52' : 'py-2.5 text-sm sm:w-44'
             )}
           >
             {courierOptions.map((option) => (
@@ -72,8 +72,8 @@ export const TrackingSearch: React.FC<TrackingSearchProps> = ({ size = 'default'
           <button
             type="submit"
             className={cn(
-              'bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2',
-              isLarge ? 'px-8 py-3.5 text-base' : 'px-6 py-2.5 text-sm'
+              'bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-xl transition-all duration-200 shadow-sm hover:shadow-md flex items-center justify-center gap-2 flex-shrink-0 whitespace-nowrap',
+              isLarge ? 'px-6 sm:px-8 py-3.5 text-base' : 'px-5 sm:px-6 py-2.5 text-sm'
             )}
           >
             <Search className="h-5 w-5" />

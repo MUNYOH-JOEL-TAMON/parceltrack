@@ -123,12 +123,12 @@ export const TrackingPage: React.FC = () => {
                 <p className="text-text-secondary mb-6 max-w-md">
                   {error}
                 </p>
-                <div className="flex gap-3">
-                  <Button onClick={handleRefresh} variant="outline">
+                <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto justify-center">
+                  <Button onClick={handleRefresh} variant="outline" className="w-full sm:w-auto">
                     Try Again
                   </Button>
-                  <Link to="/">
-                    <Button>Search Another Package</Button>
+                  <Link to="/" className="w-full sm:w-auto">
+                    <Button className="w-full sm:w-auto">Search Another Package</Button>
                   </Link>
                 </div>
               </div>
@@ -140,29 +140,31 @@ export const TrackingPage: React.FC = () => {
             <div className="space-y-6">
               {/* Summary Card */}
               <Card>
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-6">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h1 className="text-2xl font-bold text-text-primary">
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-6 gap-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <h1 className="text-xl sm:text-2xl font-bold text-text-primary">
                         Tracking Details
                       </h1>
                       <StatusBadge status={shipment.status} />
                     </div>
-                    <div className="flex items-center gap-2 text-lg font-mono text-text-secondary">
+                    <div className="flex items-center gap-2 text-base sm:text-lg font-mono text-text-secondary break-all">
                       <span>{shipment.trackingNumber}</span>
                       <button
                         onClick={handleCopyTracking}
-                        className="text-primary-600 hover:text-primary-700 transition-colors"
+                        className="text-primary-600 hover:text-primary-700 transition-colors flex-shrink-0"
+                        title="Copy tracking number"
                       >
                         <Copy className="h-4 w-4" />
                       </button>
                     </div>
                   </div>
-                  <div className="mt-4 sm:mt-0 flex gap-2">
+                  <div className="mt-2 sm:mt-0 flex gap-2 flex-shrink-0">
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={handleRefresh}
+                      className="w-full sm:w-auto justify-center"
                     >
                       <RefreshCw className="h-4 w-4 mr-2" />
                       Refresh
