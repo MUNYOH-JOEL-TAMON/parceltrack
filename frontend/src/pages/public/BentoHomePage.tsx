@@ -108,7 +108,7 @@ export const BentoHomePage: React.FC = () => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight tracking-tight break-words">
               Multi-carrier package tracking made simple
             </h1>
 
@@ -121,27 +121,27 @@ export const BentoHomePage: React.FC = () => {
             {/* Inline Tracking Search */}
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-2 md:p-3 mb-3 max-w-2xl focus-within:border-green-600 focus-within:ring-2 focus-within:ring-green-100 transition-all">
               <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
-                <div className="flex-1 flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 bg-gray-50 rounded-lg">
+                <div className="flex-1 flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 bg-gray-50 rounded-lg min-w-0">
                   <Search className="text-gray-400 flex-shrink-0" size={18} />
                   <input
                     type="text"
                     placeholder="Enter tracking number (e.g. USPS, FedEx, DHL, UPS)"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
-                    className="flex-1 bg-transparent border-none outline-none text-sm md:text-base text-gray-900 placeholder-gray-500 w-full"
+                    className="flex-1 bg-transparent border-none outline-none text-sm md:text-base text-gray-900 placeholder-gray-500 w-full min-w-0"
                   />
                   {trackingNumber && (
                     <button
                       type="button"
                       onClick={() => setTrackingNumber('')}
-                      className="text-gray-400 hover:text-gray-600 text-xs px-1"
+                      className="text-gray-400 hover:text-gray-600 text-xs px-1.5 py-0.5 rounded flex-shrink-0"
                     >
                       Clear
                     </button>
                   )}
                 </div>
-                <Link to={`/track?number=${encodeURIComponent(trackingNumber.trim())}`} className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto px-6 md:px-8 whitespace-nowrap bg-green-600 hover:bg-green-700 text-white">
+                <Link to={`/track?number=${encodeURIComponent(trackingNumber.trim())}`} className="w-full sm:w-auto flex-shrink-0">
+                  <Button size="lg" className="w-full sm:w-auto px-6 md:px-8 whitespace-nowrap bg-green-600 hover:bg-green-700 text-white font-medium">
                     Track Now
                   </Button>
                 </Link>
@@ -150,29 +150,29 @@ export const BentoHomePage: React.FC = () => {
 
             {/* Automatic Carrier Detection Badge */}
             {detectedCarrier ? (
-              <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-green-800 text-xs font-medium">
-                <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
-                <span>Auto-detected Carrier: <strong className="font-semibold text-green-900">{detectedCarrier.name}</strong></span>
+              <div className="mb-4 inline-flex flex-wrap items-center gap-2 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-green-800 text-xs font-medium max-w-full">
+                <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse flex-shrink-0" />
+                <span>Auto-detected: <strong className="font-semibold text-green-900">{detectedCarrier.name}</strong></span>
                 <span className="text-green-600 font-mono text-[11px]">({detectedCarrier.confidence} match)</span>
               </div>
             ) : (
-              <div className="mb-4 text-xs text-gray-500 flex items-center gap-1.5">
-                <Truck size={14} className="text-gray-400" />
+              <div className="mb-4 text-xs text-gray-500 flex items-center gap-1.5 flex-wrap">
+                <Truck size={14} className="text-gray-400 flex-shrink-0" />
                 <span>Instant auto-detection for USPS, FedEx, DHL, UPS, Amazon & 1000+ carriers</span>
               </div>
             )}
 
             {/* Quick Features */}
-            <div className="flex flex-wrap gap-3 md:gap-6 text-xs md:text-sm text-gray-600">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-x-4 sm:gap-x-6 gap-y-2 text-xs md:text-sm text-gray-600">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <CheckCircle2 className="text-green-600 flex-shrink-0" size={14} />
                 <span>No account required</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <CheckCircle2 className="text-green-600 flex-shrink-0" size={14} />
                 <span>Instant results</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <CheckCircle2 className="text-green-600 flex-shrink-0" size={14} />
                 <span>1000+ carriers</span>
               </div>

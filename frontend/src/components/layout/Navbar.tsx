@@ -35,18 +35,18 @@ export const Navbar: React.FC = () => {
             </div>
           </Link>
 
-          {/* Quick Track Search in Navbar (Header Feature) */}
+          {/* Quick Track Search in Navbar (Visible on Large screens & above to prevent tablet cramming) */}
           <form
             onSubmit={handleQuickTrack}
-            className="hidden md:flex items-center bg-gray-50 hover:bg-gray-100/80 border border-gray-200 focus-within:border-green-600 focus-within:bg-white focus-within:ring-2 focus-within:ring-green-100 rounded-lg px-3 py-1.5 transition-all w-60 lg:w-72"
+            className="hidden lg:flex items-center bg-gray-50 hover:bg-gray-100/80 border border-gray-200 focus-within:border-green-600 focus-within:bg-white focus-within:ring-2 focus-within:ring-green-100 rounded-lg px-3 py-1.5 transition-all w-48 xl:w-64"
           >
-            <Search size={15} className="text-gray-400 mr-2 flex-shrink-0" />
+            <Search size={14} className="text-gray-400 mr-2 flex-shrink-0" />
             <input
               type="text"
-              placeholder="Quick track package #..."
+              placeholder="Quick track #..."
               value={quickTrackInput}
               onChange={(e) => setQuickTrackInput(e.target.value)}
-              className="bg-transparent border-none outline-none text-xs text-gray-900 placeholder-gray-400 w-full"
+              className="bg-transparent border-none outline-none text-xs text-gray-900 placeholder-gray-400 w-full min-w-0"
             />
             {quickTrackInput.trim() && (
               <button
@@ -58,18 +58,18 @@ export const Navbar: React.FC = () => {
             )}
           </form>
 
-          {/* Desktop Navigation Links & Status */}
-          <div className="hidden md:flex items-center gap-6">
+          {/* Desktop & Tablet Navigation Links & Status */}
+          <div className="hidden md:flex items-center gap-3 lg:gap-6 flex-shrink-0">
             <Link
               to="/"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm"
+              className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-xs lg:text-sm whitespace-nowrap"
             >
               Track Package
             </Link>
 
             <a
               href="/#carriers"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm flex items-center gap-1.5"
+              className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-xs lg:text-sm flex items-center gap-1.5 whitespace-nowrap"
             >
               <span>Carriers</span>
               <span className="bg-green-50 text-green-700 text-[10px] px-1.5 py-0.5 rounded-full border border-green-200 font-semibold">
@@ -79,20 +79,20 @@ export const Navbar: React.FC = () => {
 
             <Link
               to="/help"
-              className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-sm"
+              className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-xs lg:text-sm whitespace-nowrap"
             >
               Help Center
             </Link>
 
-            {/* Live Status Pill */}
-            <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-medium">
+            {/* Live Status Pill (hidden on tablet, visible on xl) */}
+            <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-medium whitespace-nowrap">
               <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
               <span>99.9% Uptime</span>
             </div>
 
-            <Link to="/admin/login">
-              <button className="bg-green-600 hover:bg-green-700 text-white font-medium text-sm px-4 py-2 rounded-xl transition-all duration-200 shadow-sm flex items-center gap-1.5">
-                <ShieldCheck size={16} />
+            <Link to="/admin/login" className="flex-shrink-0">
+              <button className="bg-green-600 hover:bg-green-700 text-white font-medium text-xs lg:text-sm px-3 sm:px-4 py-2 rounded-xl transition-all duration-200 shadow-sm flex items-center gap-1.5 whitespace-nowrap">
+                <ShieldCheck size={15} />
                 <span>Admin Login</span>
               </button>
             </Link>
