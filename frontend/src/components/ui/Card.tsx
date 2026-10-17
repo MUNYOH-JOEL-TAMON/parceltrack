@@ -5,9 +5,10 @@ interface CardProps {
   children: React.ReactNode;
   className?: string;
   padding?: 'none' | 'sm' | 'md' | 'lg';
+  onClick?: () => void;
 }
 
-export const Card: React.FC<CardProps> = ({ children, className, padding = 'md' }) => {
+export const Card: React.FC<CardProps> = ({ children, className, padding = 'md', onClick }) => {
   const paddings = {
     none: '',
     sm: 'p-4',
@@ -17,6 +18,7 @@ export const Card: React.FC<CardProps> = ({ children, className, padding = 'md' 
 
   return (
     <div
+      onClick={onClick}
       className={cn(
         'bg-white rounded-2xl border border-dark-100 shadow-soft',
         paddings[padding],
