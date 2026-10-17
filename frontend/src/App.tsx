@@ -33,8 +33,8 @@ function App() {
         <AuthProvider>
           <Routes>
             {/* Public routes */}
-            <Route path="/" element={<HomePage />} />
-            <Route path="/bento" element={<BentoHomePage />} />
+            <Route path="/" element={<BentoHomePage />} />
+            <Route path="/home-old" element={<HomePage />} />
             <Route path="/track" element={<TrackingPage />} />
             <Route path="/help" element={<HelpPage />} />
 

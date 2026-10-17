@@ -73,6 +73,10 @@ export default {
           '0%': { offsetDistance: '0%' },
           '100%': { offsetDistance: '100%' },
         },
+        gridMove: {
+          '0%': { transform: 'translateX(0) translateY(0)' },
+          '100%': { transform: 'translateX(50px) translateY(50px)' },
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
