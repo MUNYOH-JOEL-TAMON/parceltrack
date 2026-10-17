@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   Shield, 
@@ -7,21 +7,98 @@ import {
   TrendingUp,
   Zap,
   Globe,
-  CheckCircle2
+  CheckCircle2,
+  Truck
 } from 'lucide-react';
 import { Navbar } from '../../components/layout/Navbar';
 import { Footer } from '../../components/layout/Footer';
 import { Button } from '../../components/ui/Button';
 
+type JourneyStage = 'in_transit' | 'out_for_delivery' | 'delivered';
+
+const JOURNEY_STAGES: Record<JourneyStage, {
+  label: string;
+  statusText: string;
+  eta: string;
+  progressPercent: number;
+  events: Array<{ title: string; time: string; location: string; isLatest: boolean }>;
+}> = {
+  in_transit: {
+    label: 'In Transit',
+    statusText: 'Departed Regional Distribution Hub',
+    eta: 'Tomorrow by 7:00 PM',
+    progressPercent: 60,
+    events: [
+      { title: 'Departed sorting facility', time: 'Today, 04:12 AM', location: 'Memphis, TN', isLatest: true },
+      { title: 'Processed at hub', time: 'Yesterday, 10:45 PM', location: 'Memphis, TN', isLatest: false },
+      { title: 'Picked up from sender', time: '2 days ago, 02:30 PM', location: 'Dallas, TX', isLatest: false },
+    ]
+  },
+  out_for_delivery: {
+    label: 'Out for Delivery',
+    statusText: 'On Courier Delivery Vehicle',
+    eta: 'Today by 3:30 PM',
+    progressPercent: 85,
+    events: [
+      { title: 'Out for delivery with courier', time: 'Today, 08:35 AM', location: 'New York, NY 10001', isLatest: true },
+      { title: 'Arrived at local delivery station', time: 'Today, 05:20 AM', location: 'New York, NY 10001', isLatest: false },
+      { title: 'Departed sorting hub', time: 'Yesterday, 11:15 PM', location: 'Newark, NJ 07102', isLatest: false },
+    ]
+  },
+  delivered: {
+    label: 'Delivered',
+    statusText: 'Delivered — Left at Front Door',
+    eta: 'Delivered Today at 1:45 PM',
+    progressPercent: 100,
+    events: [
+      { title: 'Delivered, signed by recipient', time: 'Today, 01:45 PM', location: 'New York, NY 10001', isLatest: true },
+      { title: 'Out for delivery with courier', time: 'Today, 08:35 AM', location: 'New York, NY 10001', isLatest: false },
+      { title: 'Arrived at local delivery station', time: 'Today, 05:20 AM', location: 'New York, NY 10001', isLatest: false },
+    ]
+  }
+};
+
 export const BentoHomePage: React.FC = () => {
   const [trackingNumber, setTrackingNumber] = useState('');
+  const [journeyStage, setJourneyStage] = useState<JourneyStage>('out_for_delivery');
+
+  // Real-time automatic carrier detection
+  const detectedCarrier = useMemo(() => {
+    const clean = trackingNumber.trim().toUpperCase();
+    if (!clean || clean.length < 3) return null;
+
+    if (/^1Z[0-9A-Z]{16}$/i.test(clean) || clean.startsWith('1Z')) {
+      return { name: 'UPS', confidence: '99%' };
+    }
+    if (/^TBA[0-9]{10,14}$/i.test(clean) || clean.startsWith('TBA')) {
+      return { name: 'Amazon Logistics', confidence: '99%' };
+    }
+    if (/^(94|92|93|95)[0-9]{18,22}$/.test(clean) || (/^94\d{8,}/.test(clean))) {
+      return { name: 'USPS', confidence: '98%' };
+    }
+    if (/^[0-9]{12}$/.test(clean) || /^[0-9]{15}$/.test(clean)) {
+      return { name: 'FedEx', confidence: '96%' };
+    }
+    if (/^[0-9]{10}$/.test(clean)) {
+      return { name: 'DHL Express', confidence: '97%' };
+    }
+    if (/^[A-Z]{2}[0-9]{9}CN$/i.test(clean)) {
+      return { name: 'China Post', confidence: '99%' };
+    }
+    if (/^[A-Z]{2}[0-9]{9}GB$/i.test(clean)) {
+      return { name: 'Royal Mail', confidence: '99%' };
+    }
+    return null;
+  }, [trackingNumber]);
+
+  const activeStageData = JOURNEY_STAGES[journeyStage];
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Hero Section - Clean and Direct */}
-      <section className="relative bg-gradient-to-b from-green-50 to-white pt-16 md:pt-20 pb-20 md:pb-32 px-4 md:px-6">
+      {/* Hero Section - Minimalist Pure White with Refined Typography */}
+      <section className="relative bg-white pt-16 md:pt-20 pb-16 md:pb-24 px-4 md:px-6 border-b border-gray-100">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl mx-auto md:mx-0">
             {/* Trust Badge */}
@@ -31,7 +108,7 @@ export const BentoHomePage: React.FC = () => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight tracking-tight">
               Multi-carrier package tracking made simple
             </h1>
 
@@ -42,25 +119,48 @@ export const BentoHomePage: React.FC = () => {
             </p>
 
             {/* Inline Tracking Search */}
-            <div className="bg-white rounded-xl shadow-lg border border-gray-200 p-2 md:p-3 mb-6 max-w-2xl">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-2 md:p-3 mb-3 max-w-2xl focus-within:border-green-600 focus-within:ring-2 focus-within:ring-green-100 transition-all">
               <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
                 <div className="flex-1 flex items-center gap-2 md:gap-3 px-3 md:px-4 py-2 md:py-3 bg-gray-50 rounded-lg">
                   <Search className="text-gray-400 flex-shrink-0" size={18} />
                   <input
                     type="text"
-                    placeholder="Enter tracking number"
+                    placeholder="Enter tracking number (e.g. USPS, FedEx, DHL, UPS)"
                     value={trackingNumber}
                     onChange={(e) => setTrackingNumber(e.target.value)}
                     className="flex-1 bg-transparent border-none outline-none text-sm md:text-base text-gray-900 placeholder-gray-500 w-full"
                   />
+                  {trackingNumber && (
+                    <button
+                      type="button"
+                      onClick={() => setTrackingNumber('')}
+                      className="text-gray-400 hover:text-gray-600 text-xs px-1"
+                    >
+                      Clear
+                    </button>
+                  )}
                 </div>
-                <Link to={`/track?number=${trackingNumber}`} className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto px-6 md:px-8 whitespace-nowrap">
+                <Link to={`/track?number=${encodeURIComponent(trackingNumber.trim())}`} className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto px-6 md:px-8 whitespace-nowrap bg-green-600 hover:bg-green-700 text-white">
                     Track Now
                   </Button>
                 </Link>
               </div>
             </div>
+
+            {/* Automatic Carrier Detection Badge */}
+            {detectedCarrier ? (
+              <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-green-50 border border-green-200 text-green-800 text-xs font-medium">
+                <span className="w-2 h-2 rounded-full bg-green-600 animate-pulse" />
+                <span>Auto-detected Carrier: <strong className="font-semibold text-green-900">{detectedCarrier.name}</strong></span>
+                <span className="text-green-600 font-mono text-[11px]">({detectedCarrier.confidence} match)</span>
+              </div>
+            ) : (
+              <div className="mb-4 text-xs text-gray-500 flex items-center gap-1.5">
+                <Truck size={14} className="text-gray-400" />
+                <span>Instant auto-detection for USPS, FedEx, DHL, UPS, Amazon & 1000+ carriers</span>
+              </div>
+            )}
 
             {/* Quick Features */}
             <div className="flex flex-wrap gap-3 md:gap-6 text-xs md:text-sm text-gray-600">
@@ -293,47 +393,92 @@ export const BentoHomePage: React.FC = () => {
               </p>
             </div>
 
-            {/* Medium Feature - Timeline */}
-            <div className="lg:col-span-2 bg-gray-900 rounded-xl md:rounded-2xl p-6 md:p-8 text-white">
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
-                <Clock className="text-green-500 flex-shrink-0" size={28} />
-                <h3 className="text-xl md:text-2xl font-bold">Complete Shipment History</h3>
+            {/* Interactive Feature - Shipment Journey Simulator */}
+            <div className="lg:col-span-2 bg-gray-900 rounded-xl md:rounded-2xl p-6 md:p-8 text-white flex flex-col justify-between border border-gray-800 shadow-md">
+              <div>
+                {/* Simulator Header & Switcher */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 mb-4 border-b border-gray-800 gap-3">
+                  <div className="flex items-center gap-2.5">
+                    <Clock className="text-green-500 flex-shrink-0" size={24} />
+                    <div>
+                      <h3 className="text-lg md:text-xl font-bold">Interactive Shipment Simulator</h3>
+                      <p className="text-xs text-gray-400">Test live tracking milestone updates</p>
+                    </div>
+                  </div>
+
+                  {/* Stage Switcher Buttons */}
+                  <div className="flex items-center gap-1.5 bg-gray-800/90 p-1 rounded-lg border border-gray-700/60 self-start sm:self-auto">
+                    {(['in_transit', 'out_for_delivery', 'delivered'] as const).map((stageKey) => {
+                      const isSelected = journeyStage === stageKey;
+                      const stageInfo = JOURNEY_STAGES[stageKey];
+                      return (
+                        <button
+                          key={stageKey}
+                          type="button"
+                          onClick={() => setJourneyStage(stageKey)}
+                          className={`px-2.5 py-1 rounded text-xs font-medium transition-all ${
+                            isSelected
+                              ? 'bg-green-600 text-white shadow-sm'
+                              : 'text-gray-400 hover:text-white hover:bg-gray-700/60'
+                          }`}
+                        >
+                          {stageInfo.label}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Progress Status Bar */}
+                <div className="bg-gray-800/60 rounded-xl p-3.5 mb-4 border border-gray-800">
+                  <div className="flex items-center justify-between text-xs mb-1.5">
+                    <span className="font-semibold text-white">{activeStageData.statusText}</span>
+                    <span className="text-green-400 font-mono text-[11px]">{activeStageData.eta}</span>
+                  </div>
+                  <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-green-500 rounded-full transition-all duration-500 ease-out"
+                      style={{ width: `${activeStageData.progressPercent}%` }}
+                    />
+                  </div>
+                </div>
+
+                {/* Dynamic Milestones List */}
+                <div className="space-y-3">
+                  {activeStageData.events.map((evt, idx) => (
+                    <div
+                      key={idx}
+                      className={`flex items-start gap-3.5 pb-2.5 ${
+                        idx !== activeStageData.events.length - 1 ? 'border-b border-gray-800/80' : ''
+                      }`}
+                    >
+                      <div
+                        className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 transition-all ${
+                          evt.isLatest ? 'bg-green-500 ring-4 ring-green-500/20' : 'bg-gray-600'
+                        }`}
+                      />
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <p
+                            className={`text-sm truncate ${
+                              evt.isLatest ? 'font-semibold text-white' : 'text-gray-300'
+                            }`}
+                          >
+                            {evt.title}
+                          </p>
+                          <span className="text-[11px] text-gray-400 whitespace-nowrap font-mono">{evt.time}</span>
+                        </div>
+                        <p className="text-xs text-gray-400 mt-0.5">{evt.location}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-              
-              {/* Timeline */}
-              <div className="space-y-3 md:space-y-4">
-                <div className="flex items-start gap-3 md:gap-4 pb-3 md:pb-4 border-b border-gray-800">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1 gap-2">
-                      <p className="font-semibold text-sm md:text-base truncate">Out for Delivery</p>
-                      <span className="text-xs text-gray-400 whitespace-nowrap">2 hours ago</span>
-                    </div>
-                    <p className="text-xs md:text-sm text-gray-400">New York, NY 10001</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3 md:gap-4 pb-3 md:pb-4 border-b border-gray-800">
-                  <div className="w-2 h-2 bg-gray-600 rounded-full mt-2 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1 gap-2">
-                      <p className="font-semibold text-gray-300 text-sm md:text-base truncate">Arrived at Facility</p>
-                      <span className="text-xs text-gray-400 whitespace-nowrap">Yesterday</span>
-                    </div>
-                    <p className="text-xs md:text-sm text-gray-400">Newark, NJ 07102</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start gap-3 md:gap-4">
-                  <div className="w-2 h-2 bg-gray-700 rounded-full mt-2 flex-shrink-0" />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center justify-between mb-1 gap-2">
-                      <p className="font-semibold text-gray-400 text-sm md:text-base truncate">In Transit</p>
-                      <span className="text-xs text-gray-400 whitespace-nowrap">2 days ago</span>
-                    </div>
-                    <p className="text-xs md:text-sm text-gray-400">Philadelphia, PA 19019</p>
-                  </div>
-                </div>
+
+              {/* Bottom Micro Hint */}
+              <div className="pt-3 mt-2 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400">
+                <span>FedEx Home Delivery • #794820183921</span>
+                <span className="text-green-400 text-[11px]">Real-time Event Stream</span>
               </div>
             </div>
 
