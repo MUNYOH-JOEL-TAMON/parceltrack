@@ -84,6 +84,183 @@ export const BentoHomePage: React.FC = () => {
         </div>
       </section>
 
+      {/* Supported Carriers Section */}
+      <section className="py-20 px-6 bg-gray-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              Track shipments from 1000+ carriers worldwide
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Seamlessly integrate with major carriers and regional providers
+            </p>
+          </div>
+
+          {/* Carrier Logo Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+            {/* UPS */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/ups.com/w/400/h/400/theme/dark/icon.jpeg?t=1736881242863" 
+                alt="UPS" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-yellow-800">UPS</span>';
+                }}
+              />
+            </div>
+
+            {/* FedEx */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/fedex.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
+                alt="FedEx" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-purple-600">FedEx</span>';
+                }}
+              />
+            </div>
+
+            {/* DHL */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/dhl.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
+                alt="DHL" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-red-600">DHL</span>';
+                }}
+              />
+            </div>
+
+            {/* USPS */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/usps.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
+                alt="USPS" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-blue-700">USPS</span>';
+                }}
+              />
+            </div>
+
+            {/* Amazon Logistics */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/amazon.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
+                alt="Amazon" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-2xl font-bold text-orange-500">Amazon</span>';
+                }}
+              />
+            </div>
+
+            {/* China Post */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://www.chinapost.com.cn/res/pc/img/logo.png" 
+                alt="China Post" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-green-700">China Post</span>';
+                }}
+              />
+            </div>
+
+            {/* Royal Mail */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/royalmail.com/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
+                alt="Royal Mail" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-red-600">Royal Mail</span>';
+                }}
+              />
+            </div>
+
+            {/* Canada Post */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/canadapost.ca/w/400/h/400/theme/dark/icon.png?t=1736881242863" 
+                alt="Canada Post" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-red-600">Canada Post</span>';
+                }}
+              />
+            </div>
+
+            {/* Australia Post */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/auspost.com.au/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
+                alt="Australia Post" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-red-600">AusPost</span>';
+                }}
+              />
+            </div>
+
+            {/* La Poste */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/laposte.fr/w/400/h/400/theme/dark/symbol.png?t=1736881242863" 
+                alt="La Poste" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-yellow-500">La Poste</span>';
+                }}
+              />
+            </div>
+
+            {/* Deutsche Post DHL */}
+            <div className="bg-white rounded-xl p-6 flex items-center justify-center hover:shadow-lg transition-shadow border border-gray-200">
+              <img 
+                src="https://cdn.brandfetch.io/deutschepost.de/w/400/h/400/theme/dark/icon.png?t=1736881242863" 
+                alt="Deutsche Post" 
+                className="h-12 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.parentElement!.innerHTML = '<span class="text-lg font-bold text-yellow-400">Deutsche Post</span>';
+                }}
+              />
+            </div>
+
+            {/* +989 More */}
+            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-6 flex items-center justify-center border border-green-500">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-1">+989</div>
+                <div className="text-xs text-green-100 font-medium">more carriers</div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            <Link to="/track">
+              <Button size="lg" className="px-8">
+                Start Tracking Now
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Feature Grid - Professional Bento Layout */}
       <section className="py-20 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
@@ -99,38 +276,6 @@ export const BentoHomePage: React.FC = () => {
 
           {/* Bento Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            
-            {/* Large Feature 1 - Multi-Carrier */}
-            <div className="lg:col-span-2 lg:row-span-2 bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-8 text-white relative overflow-hidden group">
-              <div className="relative z-10">
-                <Package className="mb-4" size={40} />
-                <h3 className="text-3xl font-bold mb-4">1000+ Carriers, One Dashboard</h3>
-                <p className="text-green-50 mb-6 text-lg leading-relaxed">
-                  Unified tracking across UPS, FedEx, DHL, USPS, and 1000+ carriers worldwide. 
-                  Real-time status updates, delivery exceptions, and location history in one place.
-                </p>
-                
-                {/* Carrier Badges */}
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {['UPS', 'FedEx', 'DHL', 'USPS', 'Amazon', 'China Post'].map((carrier) => (
-                    <span key={carrier} className="px-3 py-1.5 bg-white/10 backdrop-blur-sm rounded-lg text-sm font-medium border border-white/20">
-                      {carrier}
-                    </span>
-                  ))}
-                  <span className="px-3 py-1.5 bg-white/20 backdrop-blur-sm rounded-lg text-sm font-medium border border-white/30">
-                    +994 more
-                  </span>
-                </div>
-
-                <Link to="/track" className="inline-flex items-center gap-2 text-white font-semibold hover:gap-3 transition-all">
-                  Start tracking free
-                  <ArrowRight size={20} />
-                </Link>
-              </div>
-              
-              {/* Subtle decoration */}
-              <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
-            </div>
 
             {/* Quick Feature - No Account */}
             <div className="bg-white border-2 border-gray-200 rounded-2xl p-6 hover:border-green-600 hover:shadow-lg transition-all">
