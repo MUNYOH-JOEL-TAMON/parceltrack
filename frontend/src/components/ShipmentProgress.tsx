@@ -65,7 +65,7 @@ export const ShipmentProgress: React.FC<ShipmentProgressProps> = ({ status }) =>
           }}
         />
 
-        {milestones.map((milestone, index) => {
+        {milestones.map((milestone) => {
           const stepStatus = getStepStatus(milestone.key);
           const Icon = milestone.icon;
 

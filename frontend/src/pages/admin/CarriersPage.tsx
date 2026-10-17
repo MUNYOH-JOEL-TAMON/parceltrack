@@ -6,7 +6,6 @@ import { courierService } from '@/services/api';
 import { useToast } from '@/components/ui';
 import { formatTimeAgo } from '@/utils/formatDate';
 import { Truck, CheckCircle2, XCircle, AlertTriangle } from 'lucide-react';
-import { cn } from '@/utils/cn';
 
 export const CarriersPage: React.FC = () => {
   const { showToast } = useToast();

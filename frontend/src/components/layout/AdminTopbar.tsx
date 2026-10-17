@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Menu, Search, Bell, User } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button, Input } from '@/components/ui';
 
 interface AdminTopbarProps {
   onMenuClick: () => void;
