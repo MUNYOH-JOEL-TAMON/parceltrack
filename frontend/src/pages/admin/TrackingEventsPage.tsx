@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AdminLayout } from '@/components/layout/AdminLayout';
 import {
   Card,
@@ -16,17 +15,14 @@ import {
   Select
 } from '@/components/ui';
 import { TrackingEvent } from '@/types';
-import { useToast } from '@/components/ui';
 import { formatDateTime } from '@/utils/formatDate';
 import { Activity, MapPin } from 'lucide-react';
 
 export const TrackingEventsPage: React.FC = () => {
-  const navigate = useNavigate();
-  const { showToast } = useToast();
   const [events, setEvents] = useState<TrackingEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages] = useState(1);
 
   useEffect(() => {
     // Simulated data - would fetch from API

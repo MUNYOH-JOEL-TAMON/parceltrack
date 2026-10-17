@@ -16,8 +16,7 @@ import {
   RefreshCw, 
   MapPin, 
   Package,
-  AlertCircle,
-  ExternalLink 
+  AlertCircle
 } from 'lucide-react';
 
 export const TrackingPage: React.FC = () => {
