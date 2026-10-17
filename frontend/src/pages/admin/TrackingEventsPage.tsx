@@ -9,28 +9,52 @@ import {
   TableHead,
   TableCell,
   StatusBadge,
-  Pagination,
   TableSkeleton,
   EmptyState,
-  Select
+  Select,
 } from '@/components/ui';
-import { TrackingEvent } from '@/types';
+import { statsService } from '@/services/api';
 import { formatDateTime } from '@/utils/formatDate';
 import { Activity, MapPin } from 'lucide-react';
 
+interface ActivityEvent {
+  _id: string;
+  description: string;
+  location?: string;
+  timestamp: string;
+  status: any;
+  trackingNumber: string;
+  courier?: any;
+}
+
 export const TrackingEventsPage: React.FC = () => {
-  const [events, setEvents] = useState<TrackingEvent[]>([]);
+  const [events, setEvents] = useState<ActivityEvent[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages] = useState(1);
+  const [statusFilter, setStatusFilter] = useState('all');
 
   useEffect(() => {
-    // Simulated data - would fetch from API
-    setTimeout(() => {
-      setEvents([]);
+    fetchEvents();
+  }, []);
+
+  const fetchEvents = async () => {
+    setIsLoading(true);
+    try {
+      const response = await statsService.getRecentActivity();
+      setEvents(response.data.data || []);
+    } catch (error) {
+      console.error('Error fetching activity events:', error);
+    } finally {
       setIsLoading(false);
-    }, 500);
-  }, [currentPage]);
+    }
+  };
+
+  const filteredEvents = events.filter((event) => {
+    if (statusFilter === 'all') return true;
+    if (statusFilter === 'exception') {
+      return ['exception', 'delayed', 'delivery_attempted'].includes(event.status);
+    }
+    return event.status === statusFilter;
+  });
 
   return (
     <AdminLayout title="Tracking Events">
@@ -44,11 +68,15 @@ export const TrackingEventsPage: React.FC = () => {
                 { value: 'all', label: 'All Events' },
                 { value: 'delivered', label: 'Delivered' },
                 { value: 'in_transit', label: 'In Transit' },
-                { value: 'exception', label: 'Exceptions' },
+                { value: 'out_for_delivery', label: 'Out for Delivery' },
+                { value: 'exception', label: 'Exceptions & Delays' },
               ]}
-              value="all"
-              onChange={() => {}}
+              value={statusFilter}
+              onChange={(e) => setStatusFilter(e.target.value)}
             />
+            <span className="text-xs text-text-secondary ml-auto">
+              Showing {filteredEvents.length} events
+            </span>
           </div>
         </Card>
 
@@ -58,64 +86,65 @@ export const TrackingEventsPage: React.FC = () => {
             <div className="p-6">
               <TableSkeleton rows={10} />
             </div>
-          ) : events.length === 0 ? (
+          ) : filteredEvents.length === 0 ? (
             <EmptyState
               icon={Activity}
               title="No Tracking Events"
-              description="No tracking events have been recorded yet."
+              description="No tracking events found matching the selected filter."
             />
           ) : (
-            <>
-              <div className="overflow-x-auto">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Event</TableHead>
-                      <TableHead>Tracking Number</TableHead>
-                      <TableHead>Courier</TableHead>
-                      <TableHead>Location</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Timestamp</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {events.map((event) => (
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Event Description</TableHead>
+                    <TableHead>Tracking Number</TableHead>
+                    <TableHead>Courier</TableHead>
+                    <TableHead>Location</TableHead>
+                    <TableHead>Status</TableHead>
+                    <TableHead>Timestamp</TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredEvents.map((event) => {
+                    const courierName =
+                      typeof event.courier === 'object' && event.courier?.name
+                        ? event.courier.name
+                        : typeof event.courier === 'string'
+                        ? event.courier
+                        : '—';
+
+                    return (
                       <TableRow key={event._id}>
-                        <TableCell>{event.description}</TableCell>
-                        <TableCell className="font-mono">—</TableCell>
-                        <TableCell>—</TableCell>
+                        <TableCell className="font-medium text-text-primary">
+                          {event.description}
+                        </TableCell>
+                        <TableCell className="font-mono text-sm text-primary-600 font-semibold">
+                          {event.trackingNumber || '—'}
+                        </TableCell>
+                        <TableCell className="text-sm">{courierName}</TableCell>
                         <TableCell>
                           {event.location ? (
-                            <div className="flex items-center gap-1">
-                              <MapPin className="h-3 w-3" />
-                              {event.location}
+                            <div className="flex items-center gap-1.5 text-sm text-text-secondary">
+                              <MapPin className="h-3.5 w-3.5 text-primary-600 flex-shrink-0" />
+                              <span>{event.location}</span>
                             </div>
                           ) : (
-                            '—'
+                            <span className="text-text-secondary">—</span>
                           )}
                         </TableCell>
                         <TableCell>
                           <StatusBadge status={event.status} />
                         </TableCell>
-                        <TableCell className="text-sm">
+                        <TableCell className="text-sm text-text-secondary whitespace-nowrap">
                           {formatDateTime(event.timestamp)}
                         </TableCell>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-
-              {totalPages > 1 && (
-                <div className="p-4 border-t border-border">
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={setCurrentPage}
-                  />
-                </div>
-              )}
-            </>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </div>
           )}
         </Card>
       </div>

@@ -16,23 +16,39 @@ import {
   EmptyState
 } from '@/components/ui';
 import { Shipment } from '@/types';
+import { shipmentService } from '@/services/api';
+import { useToast } from '@/components/ui';
 import { formatDateTime } from '@/utils/formatDate';
 import { AlertCircle, ExternalLink } from 'lucide-react';
 
 export const ExceptionsPage: React.FC = () => {
   const navigate = useNavigate();
+  const { showToast } = useToast();
   const [shipments, setShipments] = useState<Shipment[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    // Simulated data - would fetch from API
-    setTimeout(() => {
-      setShipments([]);
-      setIsLoading(false);
-    }, 500);
+    fetchExceptions();
   }, [currentPage]);
+
+  const fetchExceptions = async () => {
+    setIsLoading(true);
+    try {
+      const response = await shipmentService.getAllShipments({
+        page: currentPage,
+        limit: 10,
+        status: 'exceptions',
+      });
+      setShipments(response.data.data.shipments || []);
+      setTotalPages(response.data.data.totalPages || 1);
+    } catch (error: any) {
+      showToast('Failed to load exceptions', 'error');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <AdminLayout title="Exceptions">

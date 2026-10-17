@@ -17,7 +17,18 @@ export const getAllShipments = async (req: AuthRequest, res: Response): Promise<
     const filter: any = {};
 
     if (req.query.status) {
-      filter.status = req.query.status;
+      if (req.query.status === 'exceptions') {
+        filter.status = { $in: ['exception', 'delayed', 'delivery_attempted', 'returned_to_sender'] };
+      } else {
+        filter.status = req.query.status;
+      }
+    }
+
+    if (req.query.courier && req.query.courier !== 'all') {
+      const courierDoc = await Courier.findOne({ slug: req.query.courier });
+      if (courierDoc) {
+        filter.courier = courierDoc._id;
+      }
     }
 
     if (req.query.search) {
