@@ -404,18 +404,18 @@ export const BentoHomePage: React.FC = () => {
             </div>
 
             {/* +989 More */}
-            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-xl p-6 flex items-center justify-center border border-green-500">
+            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-lg md:rounded-xl p-4 md:p-6 flex items-center justify-center border border-green-500 min-h-[80px] md:min-h-[100px]">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-1">+989</div>
-                <div className="text-xs text-green-100 font-medium">more carriers</div>
+                <div className="text-2xl md:text-3xl font-bold text-white mb-0.5 md:mb-1">+989</div>
+                <div className="text-[10px] md:text-xs text-green-100 font-medium">more carriers</div>
               </div>
             </div>
           </div>
 
           {/* CTA */}
-          <div className="text-center">
+          <div className="text-center px-4">
             <Link to="/track">
-              <Button size="lg" className="px-8">
+              <Button size="lg" className="px-6 md:px-8 w-full sm:w-auto">
                 Start Tracking Now
               </Button>
             </Link>
