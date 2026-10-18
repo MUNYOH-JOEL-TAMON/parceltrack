@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { Card } from '@/components/ui';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import { Card, Button } from '@/components/ui';
+import { ChevronDown, ChevronUp, Headphones, ArrowRight } from 'lucide-react';
 
 interface FAQItem {
   question: string;
@@ -101,17 +102,30 @@ export const HelpPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Contact Section */}
-          <Card className="mt-12 text-center">
-            <h2 className="text-xl font-semibold text-text-primary mb-2">
-              Still need help?
-            </h2>
-            <p className="text-text-secondary mb-4">
-              Can't find the answer you're looking for? Contact our support team.
-            </p>
-            <p className="text-primary-600 font-medium">
-              support@parceltrack.com
-            </p>
+          {/* Professional Contact Section */}
+          <Card className="mt-14 p-8 bg-gradient-to-r from-emerald-50/60 via-white to-slate-50 border border-emerald-100 shadow-soft">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div className="flex items-center gap-4 text-center sm:text-left">
+                <div className="w-14 h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0 shadow-sm">
+                  <Headphones className="h-7 w-7" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold text-slate-900 mb-1">
+                    Still need help with a parcel or API?
+                  </h2>
+                  <p className="text-sm text-slate-600 max-w-md">
+                    Our operations dispatch team is available 24/7 to resolve tracking issues and carrier escalations.
+                  </p>
+                </div>
+              </div>
+
+              <Link to="/contact" className="flex-shrink-0">
+                <Button className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-2.5 rounded-xl shadow-sm gap-2">
+                  <span>Contact Support Desk</span>
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </Card>
         </div>
       </main>
