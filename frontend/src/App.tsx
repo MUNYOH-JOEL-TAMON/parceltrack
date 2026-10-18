@@ -8,6 +8,7 @@ import { HomePage } from './pages/public/HomePage';
 import { BentoHomePage } from './pages/public/BentoHomePage';
 import { TrackingPage } from './pages/public/TrackingPage';
 import { HelpPage } from './pages/public/HelpPage';
+import { ContactPage } from './pages/public/ContactPage';
 
 // Admin auth pages
 import { LoginPage } from './pages/admin/LoginPage';
@@ -36,6 +37,7 @@ function App() {
             <Route path="/home-old" element={<HomePage />} />
             <Route path="/track" element={<TrackingPage />} />
             <Route path="/help" element={<HelpPage />} />
+            <Route path="/contact" element={<ContactPage />} />
 
             {/* Admin auth routes */}
             <Route path="/admin/login" element={<LoginPage />} />

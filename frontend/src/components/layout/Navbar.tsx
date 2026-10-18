@@ -84,6 +84,13 @@ export const Navbar: React.FC = () => {
               Help Center
             </Link>
 
+            <Link
+              to="/contact"
+              className="text-gray-600 hover:text-gray-900 transition-colors font-medium text-xs lg:text-sm whitespace-nowrap"
+            >
+              Contact
+            </Link>
+
             {/* Live Status Pill (hidden on tablet, visible on xl) */}
             <div className="hidden xl:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-green-50 border border-green-200 text-green-700 text-xs font-medium whitespace-nowrap">
               <span className="w-1.5 h-1.5 rounded-full bg-green-600 animate-pulse" />
@@ -156,6 +163,13 @@ export const Navbar: React.FC = () => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Help Center
+            </Link>
+            <Link
+              to="/contact"
+              className="block text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors py-2.5 px-3 rounded-lg font-medium text-sm"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact Us
             </Link>
           </div>
 
