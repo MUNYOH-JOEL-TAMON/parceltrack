@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
-import { Card, Button, Input, useToast } from '@/components/ui';
+import { Button, Input, useToast } from '@/components/ui';
 import { copyToClipboard } from '@/utils/copyToClipboard';
 import {
   Mail,
@@ -11,7 +11,6 @@ import {
   Clock,
   Send,
   CheckCircle2,
-  AlertCircle,
   Package,
   Zap,
   Building2,
@@ -19,7 +18,6 @@ import {
   ChevronDown,
   ChevronUp,
   Paperclip,
-  Check,
   ShieldCheck,
   ArrowRight,
   ExternalLink,
